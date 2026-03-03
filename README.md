@@ -3,7 +3,7 @@
 
 # NyanTV Webpage
 
-Landing page for [nyantv.app](https://nyantv.vercel.app).
+Landing page for [nyantv.vercel.app](https://nyantv.vercel.app).
 
 Single `index.html` file. Vanilla HTML, CSS, and JavaScript with [Work Sans](https://fonts.google.com/specimen/Work+Sans) via Google Fonts. Version tag and download count fetched live from [shields.io](https://shields.io).
 

@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NyanTV</title>
-  <meta name="description" content="NyanTV is a free, open-source anime tracking & streaming client for Android TV, Fire TV, and Google TV. Sync your progress across AniList and MyAnimeList with a beautiful, modular experience built for the big screen." />
+  <meta name="description"
+    content="NyanTV is a free, open-source anime tracking & streaming client for Android TV, Fire TV, and Google TV. Sync your progress across AniList and MyAnimeList with a beautiful, modular experience built for the big screen." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nyantv.vercel.app/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="NyanTV - Anime Tracking & Streaming for Android TV" />
-  <meta property="og:description" content="Free, open-source anime tracking & streaming for Android TV. Sync AniList and MyAnimeList from your couch." />
+  <meta property="og:description"
+    content="Free, open-source anime tracking & streaming for Android TV. Sync AniList and MyAnimeList from your couch." />
   <meta property="og:url" content="https://nyantv.vercel.app/" />
-  <meta property="og:image" content="https://repository-images.githubusercontent.com/1148403874/e69c7168-c612-4638-a17c-0e139199be97">
+  <meta property="og:image"
+    content="https://repository-images.githubusercontent.com/1148403874/e69c7168-c612-4638-a17c-0e139199be97">
   <meta name="twitter:title" content="NyanTV - Anime Tracking & Streaming for Android TV" />
-  <meta name="twitter:description" content="Free, open-source anime tracking & streaming for Android TV. Sync AniList and MyAnimeList from your couch." />
-  <meta name="twitter:image" content="https://repository-images.githubusercontent.com/1148403874/e69c7168-c612-4638-a17c-0e139199be97">
+  <meta name="twitter:description"
+    content="Free, open-source anime tracking & streaming for Android TV. Sync AniList and MyAnimeList from your couch." />
+  <meta name="twitter:image"
+    content="https://repository-images.githubusercontent.com/1148403874/e69c7168-c612-4638-a17c-0e139199be97">
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/NyanTV/webpage/refs/heads/assets/icon.png" />
+  <link rel="icon" type="image/png"
+    href="https://raw.githubusercontent.com/NyanTV/webpage/refs/heads/assets/icon.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,7 +39,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
   <script type="application/json" id="features-data">
   [
@@ -127,7 +135,13 @@
   </script>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --purple: #623bfa;
@@ -137,9 +151,9 @@
       --bg: #080710;
       --bg2: #0c0b1c;
       --bg3: #0f0e22;
-      --surface: rgba(255,255,255,0.035);
-      --surface-hover: rgba(255,255,255,0.065);
-      --border: rgba(255,255,255,0.07);
+      --surface: rgba(255, 255, 255, 0.035);
+      --surface-hover: rgba(255, 255, 255, 0.065);
+      --border: rgba(255, 255, 255, 0.07);
       --border-purple: rgba(98, 59, 250, 0.22);
       --text: #eeecff;
       --text-muted: rgba(238, 236, 255, 0.5);
@@ -148,7 +162,10 @@
       --font: 'Work Sans', sans-serif;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -160,175 +177,337 @@
 
     body::before {
       content: '';
-      position: fixed; inset: 0;
+      position: fixed;
+      inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 0; opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
     }
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 max(1.5rem, 5vw); height: 60px;
-      background: rgba(8,7,16,0.75);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 max(1.5rem, 5vw);
+      height: 60px;
+      background: rgba(8, 7, 16, 0.75);
       backdrop-filter: blur(24px) saturate(180%);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
-      display: flex; align-items: center; gap: 9px;
-      text-decoration: none; cursor: pointer;
-    }
-    .nav-logo-mark {
-      width: 30px; height: 30px; background: var(--purple);
-      border-radius: 7px; display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 13px; color: #fff;
-      box-shadow: 0 0 14px var(--purple-glow); flex-shrink: 0;
-    }
-    .nav-logo-text { font-weight: 600; font-size: 1rem; color: var(--text); }
-
-    .nav-links { display: flex; gap: 0; list-style: none; }
-    .nav-links a {
-      text-decoration: none; font-size: 0.86rem; font-weight: 400;
-      color: var(--text-muted); padding: 6px 14px;
-      border-radius: 8px; transition: color 0.18s, background 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
       cursor: pointer;
     }
-    .nav-links a:hover { color: var(--text); background: var(--surface); }
-    .nav-links a.active { color: var(--text); }
+
+    .nav-logo-mark {
+      width: 30px;
+      height: 30px;
+      background: var(--purple);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      color: #fff;
+      box-shadow: 0 0 14px var(--purple-glow);
+      flex-shrink: 0;
+    }
+
+    .nav-logo-text {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: color 0.18s, background 0.18s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .nav-links a.active {
+      color: var(--text);
+    }
+
     .nav-cta {
-      background: var(--purple) !important; color: #fff !important;
-      padding: 7px 16px !important; font-weight: 500 !important;
+      background: var(--purple) !important;
+      color: #fff !important;
+      padding: 7px 16px !important;
+      font-weight: 500 !important;
       box-shadow: 0 0 18px var(--purple-glow);
     }
-    .nav-cta:hover { background: var(--purple-bright) !important; }
+
+    .nav-cta:hover {
+      background: var(--purple-bright) !important;
+    }
 
     /* SECTIONS */
     .section {
       padding: clamp(5rem, 10vw, 9rem) max(1.5rem, 6vw);
-      opacity: 0; transform: translateY(20px);
+      opacity: 0;
+      transform: translateY(20px);
       transition: opacity 0.55s ease, transform 0.55s ease;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
-    .section.visible { opacity: 1; transform: none; }
+
+    .section.visible {
+      opacity: 1;
+      transform: none;
+    }
 
     .section-label {
-      display: inline-block; font-size: 0.72rem; font-weight: 600;
-      letter-spacing: 0.13em; text-transform: uppercase;
-      color: #9d82ff; margin-bottom: 0.9rem;
-    }
-    .section-title {
-      font-size: clamp(1.9rem, 3.8vw, 2.9rem);
-      font-weight: 700; letter-spacing: -0.02em; line-height: 1.12;
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #9d82ff;
       margin-bottom: 0.9rem;
     }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-bottom: 0.9rem;
+    }
+
     .section-body {
-      font-size: 0.975rem; color: var(--text-muted);
-      max-width: 460px; line-height: 1.78; font-weight: 300;
+      font-size: 0.975rem;
+      color: var(--text-muted);
+      max-width: 460px;
+      line-height: 1.78;
+      font-weight: 300;
     }
 
     /* HERO */
     #hero {
-      min-height: 100svh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding-top: 60px;
-      overflow: hidden; opacity: 1; transform: none;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 60px;
+      overflow: hidden;
+      opacity: 1;
+      transform: none;
     }
 
     .hero-bg-glow {
-      position: absolute; inset: 0; pointer-events: none;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background:
-        radial-gradient(ellipse 65% 50% at 50% 45%, rgba(98,59,250,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 35% 28% at 15% 75%, rgba(98,59,250,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 28% 22% at 85% 15%, rgba(124,92,252,0.09) 0%, transparent 60%);
+        radial-gradient(ellipse 65% 50% at 50% 45%, rgba(98, 59, 250, 0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 28% at 15% 75%, rgba(98, 59, 250, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 28% 22% at 85% 15%, rgba(124, 92, 252, 0.09) 0%, transparent 60%);
     }
+
     .hero-grid {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background-image:
-        linear-gradient(rgba(98,59,250,0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(98,59,250,0.055) 1px, transparent 1px);
+        linear-gradient(rgba(98, 59, 250, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(98, 59, 250, 0.055) 1px, transparent 1px);
       background-size: 56px 56px;
       mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, black 15%, transparent 80%);
       animation: gridDrift 18s linear infinite;
     }
-    @keyframes gridDrift { 0% { background-position: 0 0; } 100% { background-position: 56px 56px; } }
+
+    @keyframes gridDrift {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 56px 56px;
+      }
+    }
 
     .hero-inner {
-      position: relative; z-index: 1; max-width: 740px;
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
       animation: heroUp 0.8s 0.05s ease both;
     }
+
     @keyframes heroUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to { opacity: 1; transform: none; }
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(98,59,250,0.1); border: 1px solid rgba(98,59,250,0.28);
-      border-radius: 999px; padding: 5px 14px;
-      font-size: 0.75rem; font-weight: 500; color: #a892ff;
-      letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 1.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(98, 59, 250, 0.1);
+      border: 1px solid rgba(98, 59, 250, 0.28);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #a892ff;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 1.9rem;
       animation: heroUp 0.8s 0.12s ease both;
     }
+
     .badge-dot {
-      width: 6px; height: 6px; background: var(--purple);
-      border-radius: 50%; box-shadow: 0 0 6px var(--purple);
+      width: 6px;
+      height: 6px;
+      background: var(--purple);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--purple);
       animation: blink 2.2s ease infinite;
     }
-    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.35;
+      }
+    }
 
     .hero h1 {
       font-size: clamp(2.8rem, 7.5vw, 5.8rem);
-      font-weight: 800; letter-spacing: -0.035em; line-height: 1.03;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.03;
       margin-bottom: 1.4rem;
       animation: heroUp 0.8s 0.18s ease both;
     }
+
     .hero h1 .accent {
       background: linear-gradient(130deg, #b09cff 0%, #623bfa 45%, #d966f5 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .hero-sub {
-      font-size: clamp(0.95rem, 2vw, 1.15rem); color: var(--text-muted);
-      max-width: 500px; margin: 0 auto 2.5rem;
-      line-height: 1.72; font-weight: 300;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.72;
+      font-weight: 300;
       animation: heroUp 0.8s 0.24s ease both;
     }
 
     .hero-actions {
-      display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap;
+      display: flex;
+      gap: 0.9rem;
+      justify-content: center;
+      flex-wrap: wrap;
       animation: heroUp 0.8s 0.3s ease both;
     }
 
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; border-radius: 10px;
-      font-size: 0.9rem; font-weight: 500; font-family: var(--font);
-      text-decoration: none; cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-family: var(--font);
+      text-decoration: none;
+      cursor: pointer;
       transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
-      border: none; outline: none;
+      border: none;
+      outline: none;
     }
-    .btn:hover { transform: translateY(-1px); }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
     .btn-primary {
-      background: var(--purple); color: #fff;
-      box-shadow: 0 3px 20px rgba(98,59,250,0.38);
+      background: var(--purple);
+      color: #fff;
+      box-shadow: 0 3px 20px rgba(98, 59, 250, 0.38);
     }
-    .btn-primary:hover { background: var(--purple-bright); box-shadow: 0 6px 28px rgba(98,59,250,0.52); }
+
+    .btn-primary:hover {
+      background: var(--purple-bright);
+      box-shadow: 0 6px 28px rgba(98, 59, 250, 0.52);
+    }
+
     .btn-ghost {
-      background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
     }
-    .btn-ghost:hover { background: var(--surface-hover); color: var(--text); border-color: var(--border-purple); }
+
+    .btn-ghost:hover {
+      background: var(--surface-hover);
+      color: var(--text);
+      border-color: var(--border-purple);
+    }
 
     .hero-meta {
-      margin-top: 2rem; display: flex; align-items: center; justify-content: center; gap: 10px;
-      font-size: 0.78rem; color: var(--text-dim);
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
       animation: heroUp 0.8s 0.36s ease both;
     }
+
     .version-pill {
-      background: rgba(98,59,250,0.14); border: 1px solid rgba(98,59,250,0.22);
-      border-radius: 999px; padding: 2px 10px;
-      font-size: 0.72rem; color: #a892ff; font-weight: 500;
+      background: rgba(98, 59, 250, 0.14);
+      border: 1px solid rgba(98, 59, 250, 0.22);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      color: #a892ff;
+      font-weight: 500;
     }
 
     .hero-stats {
@@ -336,176 +515,401 @@
       justify-content: center;
       animation: heroUp 0.8s 0.4s ease both;
     }
+
     .stat-chip {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(61,255,160,0.07);
-      border: 1px solid rgba(61,255,160,0.2);
-      border-radius: 999px; padding: 5px 16px;
-      font-size: 0.8rem; font-weight: 500; color: var(--green);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(61, 255, 160, 0.07);
+      border: 1px solid rgba(61, 255, 160, 0.2);
+      border-radius: 999px;
+      padding: 5px 16px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--green);
       letter-spacing: 0.04em;
     }
-    .stat-chip svg { opacity: 0.7; }
+
+    .stat-chip svg {
+      opacity: 0.7;
+    }
 
     .hero-screenshot {
-      position: relative; margin-top: 4.5rem; max-width: 920px;
-      width: calc(100% - 2rem); margin-left: auto; margin-right: auto;
+      position: relative;
+      margin-top: 4.5rem;
+      max-width: 920px;
+      width: calc(100% - 2rem);
+      margin-left: auto;
+      margin-right: auto;
       animation: heroUp 0.9s 0.45s ease both;
     }
+
     .hero-screenshot-glow {
-      position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%);
-      width: 65%; height: 100px;
-      background: radial-gradient(ellipse, rgba(98,59,250,0.45) 0%, transparent 70%);
-      filter: blur(22px); pointer-events: none;
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 65%;
+      height: 100px;
+      background: radial-gradient(ellipse, rgba(98, 59, 250, 0.45) 0%, transparent 70%);
+      filter: blur(22px);
+      pointer-events: none;
     }
+
     .hero-screenshot-frame {
-      position: relative; z-index: 1;
-      background: var(--bg3); border-radius: 14px;
-      border: 1px solid rgba(98,59,250,0.2);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 20px 70px rgba(0,0,0,0.55);
-      aspect-ratio: 16/9; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      z-index: 1;
+      background: var(--bg3);
+      border-radius: 14px;
+      border: 1px solid rgba(98, 59, 250, 0.2);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 20px 70px rgba(0, 0, 0, 0.55);
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* FEATURES */
     #features {
-      background: linear-gradient(180deg, transparent, rgba(98,59,250,0.03) 50%, transparent);
+      background: linear-gradient(180deg, transparent, rgba(98, 59, 250, 0.03) 50%, transparent);
     }
-    .features-inner { max-width: 1120px; margin: 0 auto; }
+
+    .features-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
     .features-head {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2rem; align-items: end; margin-bottom: 3.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 3.5rem;
     }
-    @media (max-width: 680px) { .features-head { grid-template-columns: 1fr; } }
+
+    @media (max-width: 680px) {
+      .features-head {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1px; background: var(--border);
-      border-radius: 14px; overflow: hidden;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border-radius: 14px;
+      overflow: hidden;
     }
+
     .feature-card {
-      background: var(--bg2); padding: 1.8rem 2rem;
-      display: flex; flex-direction: column; gap: 0.8rem;
-      transition: background 0.22s; cursor: default;
-      position: relative; overflow: hidden;
+      background: var(--bg2);
+      padding: 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: background 0.22s;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
     }
+
     .feature-card::after {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(98,59,250,0.5), transparent);
-      opacity: 0; transition: opacity 0.3s;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(98, 59, 250, 0.5), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
-    .feature-card:hover { background: var(--bg3); }
-    .feature-card:hover::after { opacity: 1; }
+
+    .feature-card:hover {
+      background: var(--bg3);
+    }
+
+    .feature-card:hover::after {
+      opacity: 1;
+    }
+
     .feature-icon {
-      width: 40px; height: 40px; background: var(--purple-faint);
-      border: 1px solid var(--border-purple); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--purple-faint);
+      border: 1px solid var(--border-purple);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .feature-title { font-size: 0.95rem; font-weight: 600; }
-    .feature-desc { font-size: 0.845rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .feature-desc {
+      font-size: 0.845rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
     .feature-tag {
-      display: inline-flex; align-self: flex-start;
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase;
-      padding: 2px 9px; border-radius: 999px;
-      background: rgba(98,59,250,0.12); border: 1px solid rgba(98,59,250,0.2); color: #a892ff;
+      display: inline-flex;
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: rgba(98, 59, 250, 0.12);
+      border: 1px solid rgba(98, 59, 250, 0.2);
+      color: #a892ff;
     }
+
     .feature-tag.green {
-      background: rgba(61,255,160,0.08); border-color: rgba(61,255,160,0.2); color: var(--green);
+      background: rgba(61, 255, 160, 0.08);
+      border-color: rgba(61, 255, 160, 0.2);
+      color: var(--green);
     }
 
     /* PLATFORMS */
-    #platforms { text-align: center; background: var(--bg2); }
-    .platforms-inner { max-width: 860px; margin: 0 auto; }
-    .platforms-row {
-      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2.8rem;
+    #platforms {
+      text-align: center;
+      background: var(--bg2);
     }
+
+    .platforms-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .platforms-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2.8rem;
+    }
+
     .platform-chip {
-      display: flex; align-items: center; gap: 9px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 10px 20px;
-      font-size: 0.875rem; color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
       transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-    .platform-chip:hover { border-color: var(--border-purple); color: var(--text); background: var(--surface-hover); }
-    .platform-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--purple); box-shadow: 0 0 5px var(--purple-glow);
+
+    .platform-chip:hover {
+      border-color: var(--border-purple);
+      color: var(--text);
+      background: var(--surface-hover);
     }
-    .platform-chip.soon { opacity: 0.5; border-style: dashed; pointer-events: none; }
-    .platform-chip.soon .platform-dot { background: var(--text-dim); box-shadow: none; }
+
+    .platform-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 5px var(--purple-glow);
+    }
+
+    .platform-chip.soon {
+      opacity: 0.5;
+      border-style: dashed;
+      pointer-events: none;
+    }
+
+    .platform-chip.soon .platform-dot {
+      background: var(--text-dim);
+      box-shadow: none;
+    }
 
     /* ROADMAP */
-    .roadmap-inner { max-width: 700px; margin: 0 auto; }
-    .roadmap-list { list-style: none; }
+    .roadmap-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .roadmap-list {
+      list-style: none;
+    }
+
     .roadmap-item {
-      display: flex; align-items: flex-start; gap: 1rem;
-      padding: 1.1rem 0; border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .roadmap-item:first-child { border-top: 1px solid var(--border); }
+
+    .roadmap-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
     .roadmap-dot {
-      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; margin-top: 3px;
-      display: flex; align-items: center; justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .roadmap-dot.pending {
-      border: 1.5px dashed rgba(98,59,250,0.45); background: rgba(98,59,250,0.08);
+      border: 1.5px dashed rgba(98, 59, 250, 0.45);
+      background: rgba(98, 59, 250, 0.08);
     }
+
     .roadmap-dot.pending::after {
-      content: ''; width: 5px; height: 5px; border-radius: 50%; background: rgba(98,59,250,0.5);
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(98, 59, 250, 0.5);
     }
+
     .roadmap-dot.done {
-      border: 1.5px solid rgba(61,255,160,0.4); background: rgba(61,255,160,0.08);
+      border: 1.5px solid rgba(61, 255, 160, 0.4);
+      background: rgba(61, 255, 160, 0.08);
     }
+
     .roadmap-dot.done::after {
-      content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green);
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
     }
+
     .roadmap-dot.inprogress {
-      border: 1.5px solid rgba(251,191,36,0.5); background: rgba(251,191,36,0.08);
+      border: 1.5px solid rgba(251, 191, 36, 0.5);
+      background: rgba(251, 191, 36, 0.08);
     }
+
     .roadmap-dot.inprogress::after {
-      content: ''; width: 5px; height: 5px; border-radius: 50%;
-      background: #fbbf24; animation: blink 1.2s ease infinite;
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #fbbf24;
+      animation: blink 1.2s ease infinite;
     }
-    .roadmap-text strong { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 1px; }
-    .roadmap-text span { font-size: 0.8rem; color: var(--text-dim); }
+
+    .roadmap-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1px;
+    }
+
+    .roadmap-text span {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
 
     .roadmap-divider {
-      display: flex; align-items: center; gap: 12px;
-      margin: 1.5rem 0 0; cursor: pointer; user-select: none;
-      padding: 0.7rem 0; border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 1.5rem 0 0;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.7rem 0;
+      border-top: 1px solid var(--border);
     }
-    .roadmap-divider:hover .divider-label { color: var(--text); }
+
+    .roadmap-divider:hover .divider-label {
+      color: var(--text);
+    }
+
     .divider-label {
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-dim); transition: color 0.18s; white-space: nowrap;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: color 0.18s;
+      white-space: nowrap;
     }
-    .divider-line { flex: 1; height: 1px; background: var(--border); }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
     .divider-chevron {
-      width: 16px; height: 16px; color: var(--text-dim); flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      color: var(--text-dim);
+      flex-shrink: 0;
       transition: transform 0.25s ease;
     }
-    .roadmap-divider.open .divider-chevron { transform: rotate(180deg); }
+
+    .roadmap-divider.open .divider-chevron {
+      transform: rotate(180deg);
+    }
 
     .roadmap-done-list {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
     }
-    .roadmap-done-list.open { max-height: 900px; opacity: 1; }
+
+    .roadmap-done-list.open {
+      max-height: 900px;
+      opacity: 1;
+    }
 
     /* COMMUNITY */
-    #community { background: var(--bg2); }
-    .community-inner { max-width: 900px; margin: 0 auto; }
-    .community-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem; margin-top: 2.8rem;
+    #community {
+      background: var(--bg2);
     }
+
+    .community-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2.8rem;
+    }
+
     .community-card {
-      text-decoration: none; display: flex; align-items: center; gap: 1rem;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.2rem 1.4rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
       transition: border-color 0.2s, background 0.2s, transform 0.2s;
       -webkit-tap-highlight-color: transparent;
     }
+
     .community-card:hover {
-      border-color: var(--border-purple); background: var(--surface-hover); transform: translateY(-2px);
+      border-color: var(--border-purple);
+      background: var(--surface-hover);
+      transform: translateY(-2px);
     }
 
     .community-card:active .community-card-text strong {
@@ -513,60 +917,164 @@
     }
 
     .community-icon {
-      width: 38px; height: 38px; border-radius: 9px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .community-icon.discord { background: rgba(88,101,242,0.12); border: 1px solid rgba(88,101,242,0.22); }
-    .community-icon.telegram { background: rgba(0,136,204,0.1); border: 1px solid rgba(0,136,204,0.18); }
-    .community-icon.github { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); }
-    .community-icon.wiki { background: rgba(98,59,250,0.1); border: 1px solid rgba(98,59,250,0.18); }
-    .community-card-text strong { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 1px; }
-    .community-card-text span { font-size: 0.78rem; color: var(--text-dim); }
+
+    .community-icon.discord {
+      background: rgba(88, 101, 242, 0.12);
+      border: 1px solid rgba(88, 101, 242, 0.22);
+    }
+
+    .community-icon.telegram {
+      background: rgba(0, 136, 204, 0.1);
+      border: 1px solid rgba(0, 136, 204, 0.18);
+    }
+
+    .community-icon.github {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .community-icon.wiki {
+      background: rgba(98, 59, 250, 0.1);
+      border: 1px solid rgba(98, 59, 250, 0.18);
+    }
+
+    .community-card-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    .community-card-text span {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
 
     /* OSS */
     #oss {
-      text-align: center; position: relative; overflow: hidden;
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
+
     .oss-glow {
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(98,59,250,0.12) 0%, transparent 70%);
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(98, 59, 250, 0.12) 0%, transparent 70%);
     }
-    .oss-inner { max-width: 580px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .oss-inner {
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
     .oss-icon {
-      width: 60px; height: 60px; background: var(--purple); border-radius: 15px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.4rem; box-shadow: 0 0 28px rgba(98,59,250,0.38);
+      width: 60px;
+      height: 60px;
+      background: var(--purple);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.4rem;
+      box-shadow: 0 0 28px rgba(98, 59, 250, 0.38);
     }
+
     #oss h2 {
       font-size: clamp(1.7rem, 3.5vw, 2.5rem);
-      font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.9rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.9rem;
     }
-    #oss p { color: var(--text-muted); font-weight: 300; margin-bottom: 2rem; line-height: 1.75; }
-    .oss-actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+
+    #oss p {
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    .oss-actions {
+      display: flex;
+      gap: 0.9rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
     /* FOOTER */
     footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 2rem max(1.5rem, 5vw); flex-wrap: wrap; gap: 1rem;
-      border-top: 1px solid var(--border); position: relative; z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem max(1.5rem, 5vw);
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
     }
-    .footer-left { display: flex; align-items: center; gap: 9px; }
-    .footer-copy { font-size: 0.78rem; color: var(--text-dim); }
-    .footer-links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+
     .footer-links a {
-      text-decoration: none; font-size: 0.78rem; color: var(--text-dim); transition: color 0.18s;
+      text-decoration: none;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      transition: color 0.18s;
     }
-    .footer-links a:hover { color: var(--text-muted); }
+
+    .footer-links a:hover {
+      color: var(--text-muted);
+    }
 
     hr.section-divider {
-      border: none; height: 1px;
+      border: none;
+      height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
 
-    @media (max-width: 600px) { .nav-links { display: none; } }
-    @media (max-width: 480px) { .hero-actions { flex-direction: column; align-items: center; } }
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
 
     /* Mobile Menu */
     .mobile-menu-toggle {
@@ -578,227 +1086,368 @@
       padding: 8px;
       z-index: 1000;
     }
-    .mobile-menu-toggle svg { width: 24px; height: 24px; stroke: var(--text); }
+
+    .mobile-menu-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--text);
+    }
 
     .mobile-menu {
       position: fixed;
-      top: 0; right: -100%;
-      width: 280px; height: 100vh;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
       background: rgba(12, 11, 28, 0.8);
       border-left: 1px solid var(--border);
       z-index: 1001;
       transition: right 0.3s ease;
       padding: 80px 24px 24px;
-      box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
       visibility: hidden;
     }
-    .mobile-menu.open { right: 0; visibility: visible; }
+
+    .mobile-menu.open {
+      right: 0;
+      visibility: visible;
+    }
 
     .mobile-menu-close {
-      position: absolute; top: 18px; right: 18px;
-      background: none; border: none; color: var(--text);
-      cursor: pointer; padding: 8px; z-index: 1002;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1002;
     }
-    .mobile-menu-close svg { width: 20px; height: 20px; stroke: var(--text); }
+
+    .mobile-menu-close svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--text);
+    }
 
     .mobile-menu-links {
-      list-style: none; display: flex; flex-direction: column; gap: 8px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
+
     .mobile-menu-links a {
-      display: block; text-decoration: none;
-      font-size: 1rem; font-weight: 500; color: var(--text-muted);
-      padding: 14px 16px; border-radius: 10px;
+      display: block;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 14px 16px;
+      border-radius: 10px;
       transition: background 0.18s, color 0.18s;
-      background: var(--surface); border: 1px solid var(--border);
-      cursor: pointer; text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      text-align: center;
     }
-    .mobile-menu-links a:hover, .mobile-menu-links a:active {
-      background: var(--surface-hover); color: var(--text); border-color: var(--border-purple);
+
+    .mobile-menu-links a:hover,
+    .mobile-menu-links a:active {
+      background: var(--surface-hover);
+      color: var(--text);
+      border-color: var(--border-purple);
     }
-    .mobile-menu-links .mobile-cta { display: flex; align-items: center; justify-content: center;background: var(--purple); color: #fff; border: none; margin-top: 8px; gap: 8px; }
-    .mobile-menu-links .mobile-cta:hover { background: var(--purple-bright); }
+
+    .mobile-menu-links .mobile-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      margin-top: 8px;
+      gap: 8px;
+    }
+
+    .mobile-menu-links .mobile-cta:hover {
+      background: var(--purple-bright);
+    }
 
     .mobile-menu-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-      z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
     }
-    .mobile-menu-overlay.open { opacity: 1; visibility: visible; }
+
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
 
     @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .mobile-menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
     }
 
     .mobile-menu-image {
-      position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-      width: 120px; height: 120px; border-radius: 20px; overflow: hidden;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      overflow: hidden;
       border: 2px solid var(--border-purple);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
 
-    .mobile-menu-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mobile-menu-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-    @media (max-height: 700px) { .mobile-menu-image { width: 100px; height: 100px; bottom: 20px; } }
-    @media (max-height: 600px) { .mobile-menu-image { width: 70px; height: 70px; bottom: 15px; } }
+    @media (max-height: 700px) {
+      .mobile-menu-image {
+        width: 100px;
+        height: 100px;
+        bottom: 20px;
+      }
+    }
+
+    @media (max-height: 600px) {
+      .mobile-menu-image {
+        width: 70px;
+        height: 70px;
+        bottom: 15px;
+      }
+    }
 
     /* =============================================
        YOUTUBE MODAL
        ============================================= */
     #yt-modal-backdrop {
-      position: fixed; inset: 0; z-index: 2000;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
       background: rgba(4, 3, 14, 0.88);
       backdrop-filter: blur(12px) saturate(160%);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 1rem;
-      opacity: 0; visibility: hidden;
+      opacity: 0;
+      visibility: hidden;
       transition: opacity 0.28s ease, visibility 0.28s ease;
     }
-    #yt-modal-backdrop.open { opacity: 1; visibility: visible; }
+
+    #yt-modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
 
     .yt-modal-box {
       position: relative;
       width: 100%;
-      max-width: 420px;         /* Shorts are portrait 9:16 */
+      max-width: 420px;
+      /* Shorts are portrait 9:16 */
       background: var(--bg3);
       border-radius: 18px;
-      border: 1px solid rgba(98,59,250,0.28);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.04),
-                  0 30px 80px rgba(0,0,0,0.7),
-                  0 0 60px rgba(98,59,250,0.18);
+      border: 1px solid rgba(98, 59, 250, 0.28);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 30px 80px rgba(0, 0, 0, 0.7),
+        0 0 60px rgba(98, 59, 250, 0.18);
       overflow: hidden;
       transform: scale(0.93) translateY(12px);
-      transition: transform 0.28s cubic-bezier(.22,.68,0,1.3);
+      transition: transform 0.28s cubic-bezier(.22, .68, 0, 1.3);
     }
+
     #yt-modal-backdrop.open .yt-modal-box {
       transform: scale(1) translateY(0);
     }
 
     .yt-modal-header {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 14px 16px 0;
     }
+
     .yt-modal-title {
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; color: #a892ff;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #a892ff;
     }
+
     .yt-modal-close {
-      background: rgba(255,255,255,0.07); border: 1px solid var(--border);
-      border-radius: 999px; width: 28px; height: 28px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; color: var(--text-muted);
-      transition: background 0.18s, color 0.18s; flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: background 0.18s, color 0.18s;
+      flex-shrink: 0;
     }
-    .yt-modal-close:hover { background: rgba(255,255,255,0.13); color: var(--text); }
-    .yt-modal-close svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 2.5; }
+
+    .yt-modal-close:hover {
+      background: rgba(255, 255, 255, 0.13);
+      color: var(--text);
+    }
+
+    .yt-modal-close svg {
+      width: 13px;
+      height: 13px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+    }
 
     .yt-modal-video {
-      position: relative; width: 100%;
+      position: relative;
+      width: 100%;
       /* 9:16 Shorts aspect ratio */
       padding-bottom: 177.78%;
       margin-top: 12px;
       background: #000;
     }
+
     .yt-modal-video iframe {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      border: none; display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
     }
 
     .yt-modal-footer {
       padding: 10px 16px 14px;
-      font-size: 0.72rem; color: var(--text-dim); text-align: center;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      text-align: center;
     }
-    .yt-modal-footer a {
-      color: #a892ff; text-decoration: none;
-    }
-    .yt-modal-footer a:hover { text-decoration: underline; }
-  </style>
 
-  <!-- Vercel Web Analytics -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
+    .yt-modal-footer a {
+      color: #a892ff;
+      text-decoration: none;
+    }
+
+    .yt-modal-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments) };</script>
+  <script defer src="/stats/script.js"></script>
 </head>
+
 <body>
 
-<nav id="nav">
-  <a class="nav-logo" data-section="hero">
-    <img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/assets/images/logo.png" alt="NyanTV" style="height: 30px; width: auto; border-radius: 7px;">
-    <span class="nav-logo-text">NyanTV</span>
-  </a>
-  
-  <ul class="nav-links">
-    <li><a data-section="features">Features</a></li>
-    <li><a data-section="platforms">Platforms</a></li>
-    <li><a data-section="roadmap">Roadmap</a></li>
-    <li><a data-section="community">Community</a></li>
-    <li><a class="nav-cta" id="dl-nav" href="https://github.com/NyanTV/NyanTV/releases/latest" target="_blank" rel="noopener">Download</a></li>
-  </ul>
+  <nav id="nav">
+    <a class="nav-logo" data-section="hero">
+      <img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/assets/images/logo.png" alt="NyanTV"
+        style="height: 30px; width: auto; border-radius: 7px;">
+      <span class="nav-logo-text">NyanTV</span>
+    </a>
 
-  <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open Menu">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </button>
-</nav>
+    <ul class="nav-links">
+      <li><a data-section="features">Features</a></li>
+      <li><a data-section="platforms">Platforms</a></li>
+      <li><a data-section="roadmap">Roadmap</a></li>
+      <li><a data-section="community">Community</a></li>
+      <li><a class="nav-cta" id="dl-nav" href="https://github.com/NyanTV/NyanTV/releases/latest" target="_blank"
+          rel="noopener">Download</a></li>
+    </ul>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" id="menuClose" aria-label="Close Menu">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-      <line x1="18" y1="6" x2="6" y2="18"></line>
-      <line x1="6" y1="6" x2="18" y2="18"></line>
-    </svg>
-  </button>
-  
-  <ul class="mobile-menu-links">
-    <li><a data-section="features" class="mobile-link">Features</a></li>
-    <li><a data-section="platforms" class="mobile-link">Platforms</a></li>
-    <li><a data-section="roadmap" class="mobile-link">Roadmap</a></li>
-    <li><a data-section="community" class="mobile-link">Community</a></li>
-    <li><a href="https://github.com/NyanTV/NyanTV/releases/latest" target="_blank" rel="noopener" class="mobile-cta"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-    </svg>Download APK</a></li>
-  </ul>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-overlay" id="menuOverlay"></div>
 
-  <!-- Clickable logo — opens YouTube Short -->
-  <div class="mobile-menu-image" id="ytLogoBtn" role="button" tabindex="0" aria-label="What\'s this?">
-    <img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/assets/images/logo_transparent.png" alt="NyanTV">
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose" aria-label="Close Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <ul class="mobile-menu-links">
+      <li><a data-section="features" class="mobile-link">Features</a></li>
+      <li><a data-section="platforms" class="mobile-link">Platforms</a></li>
+      <li><a data-section="roadmap" class="mobile-link">Roadmap</a></li>
+      <li><a data-section="community" class="mobile-link">Community</a></li>
+      <li><a href="https://github.com/NyanTV/NyanTV/releases/latest" target="_blank" rel="noopener"
+          class="mobile-cta"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.3">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>Download APK</a></li>
+    </ul>
+
+    <!-- Clickable logo — opens YouTube Short -->
+    <div class="mobile-menu-image" id="ytLogoBtn" role="button" tabindex="0" aria-label="What\'s this?">
+      <img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/assets/images/logo_transparent.png" alt="NyanTV">
+    </div>
   </div>
-</div>
 
-<!-- =============================================
+  <!-- =============================================
      YOUTUBE SHORT MODAL
      ============================================= -->
-<div id="yt-modal-backdrop" role="dialog" aria-modal="true" aria-label="NyanTV Video">
-  <div class="yt-modal-box">
-    <div class="yt-modal-header">
-      <span class="yt-modal-title">Neco Coneco</span>
-      <button class="yt-modal-close" id="ytModalClose" aria-label="Close Video">
-        <svg viewBox="0 0 24 24" fill="none">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
-    <div class="yt-modal-video" id="ytVideoContainer">
-      <!-- iframe injected on open to avoid preloading -->
-    </div>
-    <div class="yt-modal-footer">
-      <a href="https://www.youtube.com/shorts/RjjhkV2FjWU" target="_blank" rel="noopener">Open in YouTube ↗</a>
+  <div id="yt-modal-backdrop" role="dialog" aria-modal="true" aria-label="NyanTV Video">
+    <div class="yt-modal-box">
+      <div class="yt-modal-header">
+        <span class="yt-modal-title">Neco Coneco</span>
+        <button class="yt-modal-close" id="ytModalClose" aria-label="Close Video">
+          <svg viewBox="0 0 24 24" fill="none">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="yt-modal-video" id="ytVideoContainer">
+        <!-- iframe injected on open to avoid preloading -->
+      </div>
+      <div class="yt-modal-footer">
+        <a href="https://www.youtube.com/shorts/RjjhkV2FjWU" target="_blank" rel="noopener">Open in YouTube ↗</a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- DOWNLOAD REDIRECT MODAL -->
-<div id="dl-modal-backdrop" role="dialog" aria-modal="true" aria-label="Downloading..."
-  style="
+  <!-- DOWNLOAD REDIRECT MODAL -->
+  <div id="dl-modal-backdrop" role="dialog" aria-modal="true" aria-label="Downloading..." style="
     position:fixed;inset:0;z-index:3000;
     background:rgba(4,3,14,0.92);
     backdrop-filter:blur(14px) saturate(160%);
@@ -807,7 +1456,7 @@
     opacity:0;visibility:hidden;
     transition:opacity 0.28s ease,visibility 0.28s ease;
   ">
-  <div style="
+    <div style="
     position:relative;width:100%;max-width:420px;
     background:var(--bg3);border-radius:18px;
     border:1px solid rgba(98,59,250,0.28);
@@ -817,628 +1466,699 @@
     transition:transform 0.28s cubic-bezier(.22,.68,0,1.3);
   " id="dl-modal-box">
 
-    <!-- Star icon -->
-    <div style="font-size:2.8rem;margin-bottom:0.6rem;line-height:1;">⭐</div>
+      <!-- Star icon -->
+      <div style="font-size:2.8rem;margin-bottom:0.6rem;line-height:1;">⭐</div>
 
-    <h3 style="font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem;">
-      Your download is starting…
-    </h3>
-    <p style="font-size:0.875rem;color:var(--text-muted);font-weight:300;line-height:1.7;margin-bottom:1.6rem;">
-      If you enjoy NyanTV, please consider leaving a<br>
-      <strong style="color:var(--text);">⭐ star on GitHub</strong> — it helps a lot!
-    </p>
+      <h3 style="font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem;">
+        Your download is starting…
+      </h3>
+      <p style="font-size:0.875rem;color:var(--text-muted);font-weight:300;line-height:1.7;margin-bottom:1.6rem;">
+        If you enjoy NyanTV, please consider leaving a<br>
+        <strong style="color:var(--text);">⭐ star on GitHub</strong> — it helps a lot!
+      </p>
 
-    <!-- GitHub star button -->
-    <a id="dl-star-btn"
-      href="https://github.com/NyanTV/NyanTV"
-      target="_blank" rel="noopener"
-      style="
+      <!-- GitHub star button -->
+      <a id="dl-star-btn" href="https://github.com/NyanTV/NyanTV" target="_blank" rel="noopener" style="
         display:inline-flex;align-items:center;gap:8px;
         padding:10px 22px;border-radius:10px;
         background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
         color:var(--text);font-size:0.875rem;font-weight:500;
         text-decoration:none;transition:background 0.18s,border-color 0.18s;
         margin-bottom:1.4rem;
-      "
-      onmouseover="this.style.background='rgba(255,255,255,0.12)';this.style.borderColor='var(--border-purple)'"
-      onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.borderColor='rgba(255,255,255,0.12)'"
-    >
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-      Leave a Star
-    </a>
-
-  <div style="font-size:0.75rem;color:var(--text-dim);">
-    Download was opened in a new tab &nbsp;·&nbsp;
-    <a id="dl-manual-link" href="#" target="_blank" rel="noopener"
-      style="color:#a892ff;text-decoration:none;border-bottom:1px dashed rgba(168,146,255,0.4);"
-      onmouseover="this.style.borderBottomStyle='solid'"
-      onmouseout="this.style.borderBottomStyle='dashed'"
-    >open again ↗</a>
-  </div>
-
-  </div>
-</div>
-
-<main>
-  <section id="hero" class="section visible">
-    <div class="hero-bg-subtle" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <div class="hero-badge" id="heroBadge" style="margin-top:1rem;">
-        <div class="badge-dot"></div>
-        Open Source &nbsp;&#xB7;&nbsp; Android TV
-      </div>
-      <h1>Your Anime.<br><span class="accent">On the Big Screen.</span></h1>
-      <p class="hero-sub">
-        Track your anime progress across AniList and MyAnimeList, beautifully and effortlessly, on any Android TV device.
-      </p>
-      <div class="hero-stats" style="margin-top:1rem; margin-bottom: 1.6rem; gap: 0.6rem; flex-wrap: wrap;">
-        <div class="stat-chip" style="background:rgba(98,59,250,0.08);border-color:rgba(98,59,250,0.25);color:#b09cff;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <polygon points="5 3 19 12 5 21 5 3"/>
-          </svg>
-          Stream via aniyomi &amp; mangayomi extensions
-        </div>
-      </div>
-      <div class="hero-actions">
-        <a class="btn btn-primary" id="dl-hero" href="https://github.com/NyanTV/NyanTV/releases/latest" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download APK
-        </a>
-        <a class="btn btn-ghost" href="https://github.com/NyanTV/NyanTV" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          View Source
-        </a>
-      </div>
-      <div class="hero-meta">
-        <span class="version-pill" id="version-pill">loading...</span>
-        Latest stable &nbsp;&#xB7;&nbsp; MIT Licensed
-      </div>
-    </div>
-    <div class="hero-stats" id="hero-stats" style="opacity:0;transition:opacity 0.4s ease;margin-top:1.4rem;">
-      <div class="stat-chip">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-          <polyline points="7 10 12 15 17 10"/>
-          <line x1="12" y1="15" x2="12" y2="3"/>
+      " onmouseover="this.style.background='rgba(255,255,255,0.12)';this.style.borderColor='var(--border-purple)'"
+        onmouseout="this.style.background='rgba(255,255,255,0.07)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
         </svg>
-        Over <span id="dl-count">…</span> downloads
-      </div>
-    </div>
-    <div class="hero-screenshot">
-      <div class="hero-screenshot-glow" aria-hidden="true"></div>
-      <div class="hero-screenshot-frame">
-        <img data-src="https://raw.githubusercontent.com/NyanTV/NyanTV/refs/heads/main/github_assets/screenshots/preview.webp" 
-          alt="NyanTV App Preview on Android TV" 
-          style="width: 100%; height: 100%; object-fit: cover; display: block;">
-        <script>
-            window.addEventListener('load', () => {
-                const img = document.querySelector('[data-src]');
-                img.src = img.dataset.src;
-            });
-        </script>
-      </div>
-    </div>
-  </section>
+        Leave a Star
+      </a>
 
-  <hr class="section-divider" />
+      <div style="font-size:0.75rem;color:var(--text-dim);">
+        Download was opened in a new tab &nbsp;·&nbsp;
+        <a id="dl-manual-link" href="#" target="_blank" rel="noopener"
+          style="color:#a892ff;text-decoration:none;border-bottom:1px dashed rgba(168,146,255,0.4);"
+          onmouseover="this.style.borderBottomStyle='solid'" onmouseout="this.style.borderBottomStyle='dashed'">open
+          again ↗</a>
+      </div>
 
-  <section id="features" class="section">
-    <div class="features-inner">
-      <div class="features-head">
-        <div>
-          <span class="section-label">Built for the couch</span>
-          <h2 class="section-title">Every feature designed for your TV</h2>
+    </div>
+  </div>
+
+  <main>
+    <section id="hero" class="section visible">
+      <div class="hero-bg-subtle" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-badge" id="heroBadge" style="margin-top:1rem;">
+          <div class="badge-dot"></div>
+          Open Source &nbsp;&#xB7;&nbsp; Android TV
         </div>
-        <p class="section-body">
-          NyanTV is purpose-built for Android TV. Every interaction, from navigation to syncing, is optimized for the remote.
+        <h1>Your Anime.<br><span class="accent">On the Big Screen.</span></h1>
+        <p class="hero-sub">
+          Track your anime progress across AniList and MyAnimeList, beautifully and effortlessly, on any Android TV
+          device.
         </p>
-      </div>
-      <div class="features-grid" id="features-grid"></div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <section id="platforms" class="section">
-    <div class="platforms-inner">
-      <span class="section-label">Compatibility</span>
-      <h2 class="section-title">Works on your setup</h2>
-      <p class="section-body" style="margin: 0 auto;">
-        If it runs Android TV, NyanTV runs on it. From flagship Google TV devices to budget Fire TV sticks.
-      </p>
-      <div class="platforms-row">
-        <div class="platform-chip"><div class="platform-dot"></div> Android TV</div>
-        <div class="platform-chip"><div class="platform-dot"></div> Google TV</div>
-        <div class="platform-chip"><div class="platform-dot"></div> Amazon Fire TV</div>
-        <div class="platform-chip soon"><div class="platform-dot"></div> Apple TV &nbsp;<span style="font-size:0.72rem;opacity:0.7">coming soon</span></div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <section id="roadmap" class="section">
-    <div class="roadmap-inner">
-      <span class="section-label">Roadmap</span>
-      <h2 class="section-title">What's coming next</h2>
-      <p class="section-body" style="margin-bottom: 2.5rem;">
-        Actively developed and community-driven. Track what is in progress and what is planned.
-      </p>
-      <ul class="roadmap-list" id="roadmap-pending"></ul>
-      <div class="roadmap-divider" id="roadmap-toggle" role="button" aria-expanded="false" tabindex="0">
-        <div class="divider-line"></div>
-        <span class="divider-label">Completed (<span id="done-count">0</span>)</span>
-        <svg class="divider-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-          <polyline points="6 9 12 15 18 9"/>
-        </svg>
-        <div class="divider-line"></div>
-      </div>
-      <ul class="roadmap-done-list" id="roadmap-done"></ul>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <section id="oss" class="section">
-    <div class="oss-glow" aria-hidden="true"></div>
-    <div class="oss-inner">
-      <div class="oss-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-      </div>
-      <h2>Free and Open Source</h2>
-      <p>NyanTV is MIT licensed. Read the code, contribute features, report issues, or fork it. Your improvements help everyone.</p>
-      <div class="oss-actions">
-        <a class="btn btn-primary" id="dl-oss" href="https://github.com/NyanTV/NyanTV/releases/latest" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Now
-        </a>
-        <a class="btn btn-ghost" href="https://github.com/NyanTV/NyanTV/wiki" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          Read the Wiki
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-divider" />
-
-  <section id="community" class="section">
-    <div class="community-inner">
-      <span class="section-label">Community</span>
-      <h2 class="section-title">Join the conversation</h2>
-      <p class="section-body">Get help, share feedback, and stay updated with the NyanTV community.</p>
-      <div class="community-grid">
-        <a class="community-card" href="https://discord.com/invite/kFrnJfRm" target="_blank" rel="noopener">
-          <div class="community-icon discord">
-            <svg width="21" height="21" viewBox="-1 -3 34 38" preserveAspectRatio="xMidYMid meet" fill="#5865F2"><path d="M20.992 20.163c-1.511-0.099-2.699-1.349-2.699-2.877 0-0.051 0.001-0.102 0.004-0.153l-0 0.007c-0.003-0.048-0.005-0.104-0.005-0.161 0-1.525 1.19-2.771 2.692-2.862l0.008-0c1.509 0.082 2.701 1.325 2.701 2.847 0 0.062-0.002 0.123-0.006 0.184l0-0.008c0.003 0.050 0.005 0.109 0.005 0.168 0 1.523-1.191 2.768-2.693 2.854l-0.008 0zM11.026 20.163c-1.511-0.099-2.699-1.349-2.699-2.877 0-0.051 0.001-0.102 0.004-0.153l-0 0.007c-0.003-0.048-0.005-0.104-0.005-0.161 0-1.525 1.19-2.771 2.692-2.862l0.008-0c1.509 0.082 2.701 1.325 2.701 2.847 0 0.062-0.002 0.123-0.006 0.184l0-0.008c0.003 0.048 0.005 0.104 0.005 0.161 0 1.525-1.19 2.771-2.692 2.862l-0.008 0zM26.393 6.465c-1.763-0.832-3.811-1.49-5.955-1.871l-0.149-0.022c-0.005-0.001-0.011-0.002-0.017-0.002-0.035 0-0.065 0.019-0.081 0.047l-0 0c-0.234 0.411-0.488 0.924-0.717 1.45l-0.043 0.111c-1.030-0.165-2.218-0.259-3.428-0.259s-2.398 0.094-3.557 0.275l0.129-0.017c-0.27-0.63-0.528-1.142-0.813-1.638l0.041 0.077c-0.017-0.029-0.048-0.047-0.083-0.047-0.005 0-0.011 0-0.016 0.001l0.001-0c-2.293 0.403-4.342 1.060-6.256 1.957l0.151-0.064c-0.017 0.007-0.031 0.019-0.040 0.034l-0 0c-2.854 4.041-4.562 9.069-4.562 14.496 0 0.907 0.048 1.802 0.141 2.684l-0.009-0.11c0.003 0.029 0.018 0.053 0.039 0.070l0 0c2.14 1.601 4.628 2.891 7.313 3.738l0.176 0.048c0.008 0.003 0.018 0.004 0.028 0.004 0.032 0 0.060-0.015 0.077-0.038l0-0c0.535-0.72 1.044-1.536 1.485-2.392l0.047-0.1c0.006-0.012 0.010-0.027 0.010-0.043 0-0.041-0.026-0.075-0.062-0.089l-0.001-0c-0.912-0.352-1.683-0.727-2.417-1.157l0.077 0.042c-0.029-0.017-0.048-0.048-0.048-0.083 0-0.031 0.015-0.059 0.038-0.076l0-0c0.157-0.118 0.315-0.24 0.465-0.364 0.016-0.013 0.037-0.021 0.059-0.021 0.014 0 0.027 0.003 0.038 0.008l-0.001-0c2.208 1.061 4.8 1.681 7.536 1.681s5.329-0.62 7.643-1.727l-0.107 0.046c0.012-0.006 0.025-0.009 0.040-0.009 0.022 0 0.043 0.008 0.059 0.021l-0-0c0.15 0.124 0.307 0.248 0.466 0.365 0.023 0.018 0.038 0.046 0.038 0.077 0 0.035-0.019 0.065-0.046 0.082l-0 0c-0.661 0.395-1.432 0.769-2.235 1.078l-0.105 0.036c-0.036 0.014-0.062 0.049-0.062 0.089 0 0.016 0.004 0.031 0.011 0.044l-0-0.001c0.501 0.96 1.009 1.775 1.571 2.548l-0.040-0.057c0.017 0.024 0.046 0.040 0.077 0.040 0.010 0 0.020-0.002 0.029-0.004l-0.001 0c2.865-0.892 5.358-2.182 7.566-3.832l-0.065 0.047c0.022-0.016 0.036-0.041 0.039-0.069l0-0c0.087-0.784 0.136-1.694 0.136-2.615 0-5.415-1.712-10.43-4.623-14.534l0.052 0.078c-0.008-0.016-0.022-0.029-0.038-0.036l-0-0z"/></svg>
+        <div class="hero-stats" style="margin-top:1rem; margin-bottom: 1.6rem; gap: 0.6rem; flex-wrap: wrap;">
+          <div class="stat-chip"
+            style="background:rgba(98,59,250,0.08);border-color:rgba(98,59,250,0.25);color:#b09cff;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            Stream via aniyomi &amp; mangayomi extensions
           </div>
-          <div class="community-card-text"><strong>Discord</strong><span>Chat and support server</span></div>
-        </a>
-        <a class="community-card" href="https://t.me/NyanSupport" target="_blank" rel="noopener">
-          <div class="community-icon telegram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="#0088CC"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </div>
-          <div class="community-card-text"><strong>Telegram</strong><span>Announcements and support</span></div>
-        </a>
-        <a class="community-card" href="https://github.com/NyanTV/NyanTV" target="_blank" rel="noopener">
-          <div class="community-icon github">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(238,236,255,0.55)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          </div>
-          <div class="community-card-text"><strong>GitHub</strong><span>Source code and issues</span></div>
-        </a>
-        <a class="community-card" href="https://github.com/NyanTV/NyanTV/wiki" target="_blank" rel="noopener">
-          <div class="community-icon wiki">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          </div>
-          <div class="community-card-text"><strong>Wiki</strong><span>Setup guides and docs</span></div>
-        </a>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" id="dl-hero" href="https://github.com/NyanTV/NyanTV/releases/latest"
+            target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download APK
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/NyanTV/NyanTV" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            View Source
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span class="version-pill" id="version-pill">loading...</span>
+          Latest stable &nbsp;&#xB7;&nbsp; MIT Licensed
+        </div>
       </div>
+      <div class="hero-stats" id="hero-stats" style="opacity:0;transition:opacity 0.4s ease;margin-top:1.4rem;">
+        <div class="stat-chip">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Over <span id="dl-count">…</span> downloads
+        </div>
+      </div>
+      <div class="hero-screenshot">
+        <div class="hero-screenshot-glow" aria-hidden="true"></div>
+        <div class="hero-screenshot-frame">
+          <img
+            data-src="https://raw.githubusercontent.com/NyanTV/NyanTV/refs/heads/main/github_assets/screenshots/preview.webp"
+            alt="NyanTV App Preview on Android TV"
+            style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <script>
+            window.addEventListener('load', () => {
+              const img = document.querySelector('[data-src]');
+              img.src = img.dataset.src;
+            });
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <section id="features" class="section">
+      <div class="features-inner">
+        <div class="features-head">
+          <div>
+            <span class="section-label">Built for the couch</span>
+            <h2 class="section-title">Every feature designed for your TV</h2>
+          </div>
+          <p class="section-body">
+            NyanTV is purpose-built for Android TV. Every interaction, from navigation to syncing, is optimized for the
+            remote.
+          </p>
+        </div>
+        <div class="features-grid" id="features-grid"></div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <section id="platforms" class="section">
+      <div class="platforms-inner">
+        <span class="section-label">Compatibility</span>
+        <h2 class="section-title">Works on your setup</h2>
+        <p class="section-body" style="margin: 0 auto;">
+          If it runs Android TV, NyanTV runs on it. From flagship Google TV devices to budget Fire TV sticks.
+        </p>
+        <div class="platforms-row">
+          <div class="platform-chip">
+            <div class="platform-dot"></div> Android TV
+          </div>
+          <div class="platform-chip">
+            <div class="platform-dot"></div> Google TV
+          </div>
+          <div class="platform-chip">
+            <div class="platform-dot"></div> Amazon Fire TV
+          </div>
+          <div class="platform-chip soon">
+            <div class="platform-dot"></div> Apple TV &nbsp;<span style="font-size:0.72rem;opacity:0.7">coming
+              soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <section id="roadmap" class="section">
+      <div class="roadmap-inner">
+        <span class="section-label">Roadmap</span>
+        <h2 class="section-title">What's coming next</h2>
+        <p class="section-body" style="margin-bottom: 2.5rem;">
+          Actively developed and community-driven. Track what is in progress and what is planned.
+        </p>
+        <ul class="roadmap-list" id="roadmap-pending"></ul>
+        <div class="roadmap-divider" id="roadmap-toggle" role="button" aria-expanded="false" tabindex="0">
+          <div class="divider-line"></div>
+          <span class="divider-label">Completed (<span id="done-count">0</span>)</span>
+          <svg class="divider-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+          <div class="divider-line"></div>
+        </div>
+        <ul class="roadmap-done-list" id="roadmap-done"></ul>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <section id="oss" class="section">
+      <div class="oss-glow" aria-hidden="true"></div>
+      <div class="oss-inner">
+        <div class="oss-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </div>
+        <h2>Free and Open Source</h2>
+        <p>NyanTV is MIT licensed. Read the code, contribute features, report issues, or fork it. Your improvements help
+          everyone.</p>
+        <div class="oss-actions">
+          <a class="btn btn-primary" id="dl-oss" href="https://github.com/NyanTV/NyanTV/releases/latest" target="_blank"
+            rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download Now
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/NyanTV/NyanTV/wiki" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+            Read the Wiki
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <section id="community" class="section">
+      <div class="community-inner">
+        <span class="section-label">Community</span>
+        <h2 class="section-title">Join the conversation</h2>
+        <p class="section-body">Get help, share feedback, and stay updated with the NyanTV community.</p>
+        <div class="community-grid">
+          <a class="community-card" href="https://discord.com/invite/kFrnJfRm" target="_blank" rel="noopener">
+            <div class="community-icon discord">
+              <svg width="21" height="21" viewBox="-1 -3 34 38" preserveAspectRatio="xMidYMid meet" fill="#5865F2">
+                <path
+                  d="M20.992 20.163c-1.511-0.099-2.699-1.349-2.699-2.877 0-0.051 0.001-0.102 0.004-0.153l-0 0.007c-0.003-0.048-0.005-0.104-0.005-0.161 0-1.525 1.19-2.771 2.692-2.862l0.008-0c1.509 0.082 2.701 1.325 2.701 2.847 0 0.062-0.002 0.123-0.006 0.184l0-0.008c0.003 0.050 0.005 0.109 0.005 0.168 0 1.523-1.191 2.768-2.693 2.854l-0.008 0zM11.026 20.163c-1.511-0.099-2.699-1.349-2.699-2.877 0-0.051 0.001-0.102 0.004-0.153l-0 0.007c-0.003-0.048-0.005-0.104-0.005-0.161 0-1.525 1.19-2.771 2.692-2.862l0.008-0c1.509 0.082 2.701 1.325 2.701 2.847 0 0.062-0.002 0.123-0.006 0.184l0-0.008c0.003 0.048 0.005 0.104 0.005 0.161 0 1.525-1.19 2.771-2.692 2.862l-0.008 0zM26.393 6.465c-1.763-0.832-3.811-1.49-5.955-1.871l-0.149-0.022c-0.005-0.001-0.011-0.002-0.017-0.002-0.035 0-0.065 0.019-0.081 0.047l-0 0c-0.234 0.411-0.488 0.924-0.717 1.45l-0.043 0.111c-1.030-0.165-2.218-0.259-3.428-0.259s-2.398 0.094-3.557 0.275l0.129-0.017c-0.27-0.63-0.528-1.142-0.813-1.638l0.041 0.077c-0.017-0.029-0.048-0.047-0.083-0.047-0.005 0-0.011 0-0.016 0.001l0.001-0c-2.293 0.403-4.342 1.060-6.256 1.957l0.151-0.064c-0.017 0.007-0.031 0.019-0.040 0.034l-0 0c-2.854 4.041-4.562 9.069-4.562 14.496 0 0.907 0.048 1.802 0.141 2.684l-0.009-0.11c0.003 0.029 0.018 0.053 0.039 0.070l0 0c2.14 1.601 4.628 2.891 7.313 3.738l0.176 0.048c0.008 0.003 0.018 0.004 0.028 0.004 0.032 0 0.060-0.015 0.077-0.038l0-0c0.535-0.72 1.044-1.536 1.485-2.392l0.047-0.1c0.006-0.012 0.010-0.027 0.010-0.043 0-0.041-0.026-0.075-0.062-0.089l-0.001-0c-0.912-0.352-1.683-0.727-2.417-1.157l0.077 0.042c-0.029-0.017-0.048-0.048-0.048-0.083 0-0.031 0.015-0.059 0.038-0.076l0-0c0.157-0.118 0.315-0.24 0.465-0.364 0.016-0.013 0.037-0.021 0.059-0.021 0.014 0 0.027 0.003 0.038 0.008l-0.001-0c2.208 1.061 4.8 1.681 7.536 1.681s5.329-0.62 7.643-1.727l-0.107 0.046c0.012-0.006 0.025-0.009 0.040-0.009 0.022 0 0.043 0.008 0.059 0.021l-0-0c0.15 0.124 0.307 0.248 0.466 0.365 0.023 0.018 0.038 0.046 0.038 0.077 0 0.035-0.019 0.065-0.046 0.082l-0 0c-0.661 0.395-1.432 0.769-2.235 1.078l-0.105 0.036c-0.036 0.014-0.062 0.049-0.062 0.089 0 0.016 0.004 0.031 0.011 0.044l-0-0.001c0.501 0.96 1.009 1.775 1.571 2.548l-0.040-0.057c0.017 0.024 0.046 0.040 0.077 0.040 0.010 0 0.020-0.002 0.029-0.004l-0.001 0c2.865-0.892 5.358-2.182 7.566-3.832l-0.065 0.047c0.022-0.016 0.036-0.041 0.039-0.069l0-0c0.087-0.784 0.136-1.694 0.136-2.615 0-5.415-1.712-10.43-4.623-14.534l0.052 0.078c-0.008-0.016-0.022-0.029-0.038-0.036l-0-0z" />
+              </svg>
+            </div>
+            <div class="community-card-text"><strong>Discord</strong><span>Chat and support server</span></div>
+          </a>
+          <a class="community-card" href="https://t.me/NyanSupport" target="_blank" rel="noopener">
+            <div class="community-icon telegram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#0088CC">
+                <path
+                  d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+              </svg>
+            </div>
+            <div class="community-card-text"><strong>Telegram</strong><span>Announcements and support</span></div>
+          </a>
+          <a class="community-card" href="https://github.com/NyanTV/NyanTV" target="_blank" rel="noopener">
+            <div class="community-icon github">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(238,236,255,0.55)">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </div>
+            <div class="community-card-text"><strong>GitHub</strong><span>Source code and issues</span></div>
+          </a>
+          <a class="community-card" href="https://github.com/NyanTV/NyanTV/wiki" target="_blank" rel="noopener">
+            <div class="community-icon wiki">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+              </svg>
+            </div>
+            <div class="community-card-text"><strong>Wiki</strong><span>Setup guides and docs</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      <img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/assets/images/logo.png" alt="NyanTV"
+        style="height: 24px; width: auto; border-radius: 6px;">
+      <span class="footer-copy">NyanTV &nbsp;&#xB7;&nbsp; MIT License</span>
     </div>
-  </section>
-</main>
+    <div class="footer-links">
+      <a href="https://github.com/NyanTV/NyanTV/releases/" target="_blank" rel="noopener">Releases</a>
+      <a href="https://github.com/NyanTV/NyanTV/wiki" target="_blank" rel="noopener">Wiki</a>
+      <a href="https://github.com/NyanTV/NyanTV/blob/main/TOS.md" target="_blank" rel="noopener">Terms</a>
+      <a href="https://github.com/NyanTV/NyanTV/blob/main/LICENSE.md" target="_blank" rel="noopener">License</a>
+      <a href="https://github.com/NyanTV/NyanTV/blob/main/DEVELOPMENT.md" target="_blank" rel="noopener">Contribute</a>
+    </div>
+  </footer>
 
-<footer>
-  <div class="footer-left">
-    <img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/assets/images/logo.png" alt="NyanTV" style="height: 24px; width: auto; border-radius: 6px;">
-    <span class="footer-copy">NyanTV &nbsp;&#xB7;&nbsp; MIT License</span>
-  </div>
-  <div class="footer-links">
-    <a href="https://github.com/NyanTV/NyanTV/releases/" target="_blank" rel="noopener">Releases</a>
-    <a href="https://github.com/NyanTV/NyanTV/wiki" target="_blank" rel="noopener">Wiki</a>
-    <a href="https://github.com/NyanTV/NyanTV/blob/main/TOS.md" target="_blank" rel="noopener">Terms</a>
-    <a href="https://github.com/NyanTV/NyanTV/blob/main/LICENSE.md" target="_blank" rel="noopener">License</a>
-    <a href="https://github.com/NyanTV/NyanTV/blob/main/DEVELOPMENT.md" target="_blank" rel="noopener">Contribute</a>
-  </div>
-</footer>
+  <script>
+    (function () {
+      'use strict';
 
-<script>
-(function () {
-  'use strict';
+      const ICONS = {
+        sync: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg>`,
+        clock: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="15"/></svg>`,
+        dpad: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="12" cy="12" r="1.5"/><path d="M12 8v1M12 15v1M8 12h1M15 12h1"/></svg>`,
+        widget: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
+        skip: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+        modular: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><rect x="2" y="2" width="9" height="9" rx="1.5"/><rect x="13" y="2" width="9" height="9" rx="1.5"/><rect x="2" y="13" width="9" height="9" rx="1.5"/><rect x="13" y="13" width="9" height="9" rx="1.5"/></svg>`,
+        performance: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+        lightbulb: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3v1M5 8h1M18 8h1M8 5L7 4M16 5l1-1"/><path d="M12 6.5a5.5 5.5 0 0 0-3 10v1a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1a5.5 5.5 0 0 0-3-10z"/><circle cx="12" cy="13" r="1"/></svg>`,
+      };
 
-  const ICONS = {
-    sync: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg>`,
-    clock: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="12" x2="15" y2="15"/></svg>`,
-    dpad: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><rect x="4" y="6" width="16" height="12" rx="2"/><circle cx="12" cy="12" r="1.5"/><path d="M12 8v1M12 15v1M8 12h1M15 12h1"/></svg>`,
-    widget: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
-    skip: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
-    modular: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><rect x="2" y="2" width="9" height="9" rx="1.5"/><rect x="13" y="2" width="9" height="9" rx="1.5"/><rect x="2" y="13" width="9" height="9" rx="1.5"/><rect x="13" y="13" width="9" height="9" rx="1.5"/></svg>`,
-    performance: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
-    lightbulb: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a892ff" stroke-width="1.8"><path d="M9 18h6M10 21h4M12 3v1M5 8h1M18 8h1M8 5L7 4M16 5l1-1"/><path d="M12 6.5a5.5 5.5 0 0 0-3 10v1a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1a5.5 5.5 0 0 0-3-10z"/><circle cx="12" cy="13" r="1"/></svg>`,
-  };
+      // =============================================
+      // DATA RENDERING
+      // =============================================
 
-  // =============================================
-  // DATA RENDERING
-  // =============================================
+      function readJSON(id) {
+        try { return JSON.parse(document.getElementById(id).textContent); }
+        catch (e) { console.error('JSON parse error in #' + id, e); return []; }
+      }
 
-  function readJSON(id) {
-    try { return JSON.parse(document.getElementById(id).textContent); }
-    catch (e) { console.error('JSON parse error in #' + id, e); return []; }
-  }
-
-  function renderFeatures() {
-    const data = readJSON('features-data');
-    document.getElementById('features-grid').innerHTML = data.map(f => `
+      function renderFeatures() {
+        const data = readJSON('features-data');
+        document.getElementById('features-grid').innerHTML = data.map(f => `
       <div class="feature-card">
         <div class="feature-icon">${ICONS[f.icon] || ''}</div>
         <div class="feature-title">${f.title}</div>
         <p class="feature-desc">${f.description}</p>
         ${f.tag ? `<span class="feature-tag${f.tagStyle === 'green' ? ' green' : ''}">${f.tag}</span>` : ''}
       </div>`).join('');
-  }
+      }
 
-  function renderRoadmap() {
-    const data = readJSON('roadmap-data');
-    const pending = data.filter(i => i.status !== 'done');
-    const done    = data.filter(i => i.status === 'done');
-    document.getElementById('done-count').textContent = done.length;
-    function item(d, i) {
-      return `<li class="roadmap-item" ${i === 0 ? 'style="border-top:1px solid var(--border)"' : ''}>
+      function renderRoadmap() {
+        const data = readJSON('roadmap-data');
+        const pending = data.filter(i => i.status !== 'done');
+        const done = data.filter(i => i.status === 'done');
+        document.getElementById('done-count').textContent = done.length;
+        function item(d, i) {
+          return `<li class="roadmap-item" ${i === 0 ? 'style="border-top:1px solid var(--border)"' : ''}>
         <div class="roadmap-dot ${d.status}"></div>
         <div class="roadmap-text"><strong>${d.title}</strong><span>${d.description}</span></div>
       </li>`;
-    }
-    document.getElementById('roadmap-pending').innerHTML = pending.map(item).join('');
-    document.getElementById('roadmap-done').innerHTML    = done.map(item).join('');
-  }
-
-  function initRoadmapToggle() {
-    const btn  = document.getElementById('roadmap-toggle');
-    const list = document.getElementById('roadmap-done');
-    btn.addEventListener('click', () => {
-      const open = btn.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open);
-      list.classList.toggle('open', open);
-    });
-    btn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
-    });
-  }
-
-  // =============================================
-  // NAVIGATION
-  // =============================================
-
-  function initNav() {
-    const NAV_H = 64;
-    document.querySelectorAll('[data-section]').forEach(el => {
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.getElementById(el.getAttribute('data-section'));
-        if (!target) return;
-        window.scrollTo({ top: target.getBoundingClientRect().top + scrollY - NAV_H, behavior: 'smooth' });
-        history.pushState(null, '', '#' + target.id);
-        highlight(target.id);
-      });
-    });
-
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) highlight(e.target.id); });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-
-    ['hero','features','platforms','roadmap','oss','community'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) io.observe(el);
-    });
-
-    if (location.hash) {
-      const t = document.getElementById(location.hash.slice(1));
-      if (t) setTimeout(() => window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - NAV_H, behavior: 'smooth' }), 80);
-    }
-  }
-
-  function highlight(id) {
-    document.querySelectorAll('.nav-links a[data-section]').forEach(a =>
-      a.classList.toggle('active', a.getAttribute('data-section') === id));
-  }
-
-  function initReveal() {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
-    document.querySelectorAll('.section:not(#hero)').forEach(el => io.observe(el));
-  }
-
-  // =============================================
-  // MOBILE MENU
-  // =============================================
-
-  const menuToggle  = document.getElementById('menuToggle');
-  const menuClose   = document.getElementById('menuClose');
-  const mobileMenu  = document.getElementById('mobileMenu');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-
-  function openMenu()  { mobileMenu.classList.add('open'); menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeMenu() { mobileMenu.classList.remove('open'); menuOverlay.classList.remove('open'); document.body.style.overflow = ''; }
-
-  if (menuToggle)  menuToggle.addEventListener('click', openMenu);
-  if (menuClose)   menuClose.addEventListener('click', closeMenu);
-  if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
-
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = link.getAttribute('data-section');
-      if (targetId) {
-        const target = document.getElementById(targetId);
-        if (target) {
-          closeMenu();
-          setTimeout(() => {
-            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
-            history.pushState(null, '', '#' + targetId);
-            highlight(targetId);
-          }, 50);
         }
-      } else {
-        closeMenu();
+        document.getElementById('roadmap-pending').innerHTML = pending.map(item).join('');
+        document.getElementById('roadmap-done').innerHTML = done.map(item).join('');
       }
-    });
-  });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) closeMenu();
-  });
+      function initRoadmapToggle() {
+        const btn = document.getElementById('roadmap-toggle');
+        const list = document.getElementById('roadmap-done');
+        btn.addEventListener('click', () => {
+          const open = btn.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+          list.classList.toggle('open', open);
+        });
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+        });
+      }
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 600 && mobileMenu && mobileMenu.classList.contains('open')) closeMenu();
-  });
+      // =============================================
+      // NAVIGATION
+      // =============================================
 
-  // =============================================
-  // YOUTUBE MODAL
-  // =============================================
+      function initNav() {
+        const NAV_H = 64;
+        document.querySelectorAll('[data-section]').forEach(el => {
+          el.addEventListener('click', e => {
+            e.preventDefault();
+            const target = document.getElementById(el.getAttribute('data-section'));
+            if (!target) return;
+            window.scrollTo({ top: target.getBoundingClientRect().top + scrollY - NAV_H, behavior: 'smooth' });
+            history.pushState(null, '', '#' + target.id);
+            highlight(target.id);
+          });
+        });
 
-  const YT_VIDEO_ID = 'RjjhkV2FjWU';
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) highlight(e.target.id); });
+        }, { rootMargin: '-40% 0px -55% 0px' });
 
-  function initYTModal() {
-    const backdrop  = document.getElementById('yt-modal-backdrop');
-    const closeBtn  = document.getElementById('ytModalClose');
-    const container = document.getElementById('ytVideoContainer');
-    const logoBtn   = document.getElementById('ytLogoBtn');
+        ['hero', 'features', 'platforms', 'roadmap', 'oss', 'community'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) io.observe(el);
+        });
 
-    function openModal() {
-      container.innerHTML = `<iframe
+        if (location.hash) {
+          const t = document.getElementById(location.hash.slice(1));
+          if (t) setTimeout(() => window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - NAV_H, behavior: 'smooth' }), 80);
+        }
+      }
+
+      function highlight(id) {
+        document.querySelectorAll('.nav-links a[data-section]').forEach(a =>
+          a.classList.toggle('active', a.getAttribute('data-section') === id));
+      }
+
+      function initReveal() {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+        }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+        document.querySelectorAll('.section:not(#hero)').forEach(el => io.observe(el));
+      }
+
+      // =============================================
+      // MOBILE MENU
+      // =============================================
+
+      const menuToggle = document.getElementById('menuToggle');
+      const menuClose = document.getElementById('menuClose');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+      function closeMenu() { mobileMenu.classList.remove('open'); menuOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+      if (menuToggle) menuToggle.addEventListener('click', openMenu);
+      if (menuClose) menuClose.addEventListener('click', closeMenu);
+      if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const targetId = link.getAttribute('data-section');
+          if (targetId) {
+            const target = document.getElementById(targetId);
+            if (target) {
+              closeMenu();
+              setTimeout(() => {
+                window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+                history.pushState(null, '', '#' + targetId);
+                highlight(targetId);
+              }, 50);
+            }
+          } else {
+            closeMenu();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) closeMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 600 && mobileMenu && mobileMenu.classList.contains('open')) closeMenu();
+      });
+
+      // =============================================
+      // YOUTUBE MODAL
+      // =============================================
+
+      const YT_VIDEO_ID = 'RjjhkV2FjWU';
+
+      function initYTModal() {
+        const backdrop = document.getElementById('yt-modal-backdrop');
+        const closeBtn = document.getElementById('ytModalClose');
+        const container = document.getElementById('ytVideoContainer');
+        const logoBtn = document.getElementById('ytLogoBtn');
+
+        function openModal() {
+          container.innerHTML = `<iframe
         src="https://www.youtube-nocookie.com/embed/${YT_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1&color=white"
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen
         title="NyanTV Preview"
       ></iframe>`;
-      backdrop.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }
+          backdrop.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          closeBtn.focus();
+        }
 
-    function closeModal() {
-      backdrop.classList.remove('open');
-      document.body.style.overflow = '';
-      setTimeout(() => { container.innerHTML = ''; }, 280);
-    }
+        function closeModal() {
+          backdrop.classList.remove('open');
+          document.body.style.overflow = '';
+          setTimeout(() => { container.innerHTML = ''; }, 280);
+        }
 
-    let logoClicks = 0, logoTimer;
-    logoBtn.addEventListener('click', () => {
-      logoClicks++;
-      clearTimeout(logoTimer);
-      if (logoClicks >= 3) { logoClicks = 0; openModal(); return; }
-      logoTimer = setTimeout(() => { logoClicks = 0; }, 600);
-    });
+        let logoClicks = 0, logoTimer;
+        logoBtn.addEventListener('click', () => {
+          logoClicks++;
+          clearTimeout(logoTimer);
+          if (logoClicks >= 3) { logoClicks = 0; openModal(); return; }
+          logoTimer = setTimeout(() => { logoClicks = 0; }, 600);
+        });
 
-    closeBtn.addEventListener('click', closeModal);
+        closeBtn.addEventListener('click', closeModal);
 
-    backdrop.addEventListener('click', e => {
-      if (e.target === backdrop) closeModal();
-    });
+        backdrop.addEventListener('click', e => {
+          if (e.target === backdrop) closeModal();
+        });
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
-    });
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+        });
 
-    let badgeClicks = 0, badgeTimer;
-    document.getElementById('heroBadge').addEventListener('click', () => {
-      badgeClicks++;
-      clearTimeout(badgeTimer);
-      if (badgeClicks >= 3) { badgeClicks = 0; openModal(); return; }
-      badgeTimer = setTimeout(() => { badgeClicks = 0; }, 600);
-    });
-  }
+        let badgeClicks = 0, badgeTimer;
+        document.getElementById('heroBadge').addEventListener('click', () => {
+          badgeClicks++;
+          clearTimeout(badgeTimer);
+          if (badgeClicks >= 3) { badgeClicks = 0; openModal(); return; }
+          badgeTimer = setTimeout(() => { badgeClicks = 0; }, 600);
+        });
+      }
 
-  // =============================================
-  // DOWNLOAD REDIRECT MODAL
-  // =============================================
-  (function initDownloadModal() {
-    const backdrop   = document.getElementById('dl-modal-backdrop');
-    const box        = document.getElementById('dl-modal-box');
-    const countEl    = document.getElementById('dl-countdown');
-    const manualLink = document.getElementById('dl-manual-link');
-    const DL_URL     = 'https://github.com/NyanTV/NyanTV/releases/latest';
+      // =============================================
+      // DOWNLOAD REDIRECT MODAL
+      // =============================================
+      (function initDownloadModal() {
+        const backdrop = document.getElementById('dl-modal-backdrop');
+        const box = document.getElementById('dl-modal-box');
+        const countEl = document.getElementById('dl-countdown');
+        const manualLink = document.getElementById('dl-manual-link');
+        const DL_URL = 'https://github.com/NyanTV/NyanTV/releases/latest';
 
-    let countdownTimer = null;
+        let countdownTimer = null;
 
-    function openDlModal(href) {
-      const url = href || DL_URL;
-      manualLink.href = url;
+        function openDlModal(href) {
+          const url = href || DL_URL;
+          manualLink.href = url;
 
-      window.open(url, '_blank', 'noopener');
-      hasDownloaded = true;
+          window.open(url, '_blank', 'noopener');
+          hasDownloaded = true;
 
-      backdrop.style.opacity = '1';
-      backdrop.style.visibility = 'visible';
-      box.style.transform = 'scale(1) translateY(0)';
-      document.body.style.overflow = 'hidden';
-    }
+          backdrop.style.opacity = '1';
+          backdrop.style.visibility = 'visible';
+          box.style.transform = 'scale(1) translateY(0)';
+          document.body.style.overflow = 'hidden';
+        }
 
-    function closeDlModal() {
-      clearInterval(countdownTimer);
-      backdrop.style.opacity = '0';
-      backdrop.style.visibility = 'hidden';
-      box.style.transform = 'scale(0.93) translateY(12px)';
-      document.body.style.overflow = '';
-    }
+        function closeDlModal() {
+          clearInterval(countdownTimer);
+          backdrop.style.opacity = '0';
+          backdrop.style.visibility = 'hidden';
+          box.style.transform = 'scale(0.93) translateY(12px)';
+          document.body.style.overflow = '';
+        }
 
-    // Intercept all download buttons
-    ['dl-nav', 'dl-hero', 'dl-oss'].forEach(id => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        openDlModal(el.href);
-      });
-    });
+        // Intercept all download buttons
+        ['dl-nav', 'dl-hero', 'dl-oss'].forEach(id => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          el.addEventListener('click', e => {
+            e.preventDefault();
+            openDlModal(el.href);
+          });
+        });
 
-    document.querySelectorAll('a.mobile-cta').forEach(el => {
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        closeDlModal(); // close mobile menu first
-        setTimeout(() => openDlModal(el.href), 60);
-      });
-    });
+        document.querySelectorAll('a.mobile-cta').forEach(el => {
+          el.addEventListener('click', e => {
+            e.preventDefault();
+            closeDlModal(); // close mobile menu first
+            setTimeout(() => openDlModal(el.href), 60);
+          });
+        });
 
-    // Close on backdrop click
-    backdrop.addEventListener('click', e => {
-      if (e.target === backdrop) closeDlModal();
-    });
+        // Close on backdrop click
+        backdrop.addEventListener('click', e => {
+          if (e.target === backdrop) closeDlModal();
+        });
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && backdrop.style.visibility === 'visible') closeDlModal();
-    });
-  })();
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && backdrop.style.visibility === 'visible') closeDlModal();
+        });
+      })();
 
-  // =============================================
-  // GITHUB DATA
-  // =============================================
+      // =============================================
+      // GITHUB DATA
+      // =============================================
 
-  function parseShieldsCount(str) {
-    // shields.io returns "1.2k", "900", "2.4M", etc.
-    const s = (str || '0').replace(/,/g, '').trim();
-    if (s.endsWith('k') || s.endsWith('K')) return Math.round(parseFloat(s) * 1_000);
-    if (s.endsWith('M') || s.endsWith('m')) return Math.round(parseFloat(s) * 1_000_000);
-    return parseInt(s, 10) || 0;
-  }
+      function parseShieldsCount(str) {
+        // shields.io returns "1.2k", "900", "2.4M", etc.
+        const s = (str || '0').replace(/,/g, '').trim();
+        if (s.endsWith('k') || s.endsWith('K')) return Math.round(parseFloat(s) * 1_000);
+        if (s.endsWith('M') || s.endsWith('m')) return Math.round(parseFloat(s) * 1_000_000);
+        return parseInt(s, 10) || 0;
+      }
 
-//  function setDownloadUrls(url) {
-//    ['dl-nav', 'dl-hero', 'dl-oss'].forEach(id => {
-//      const el = document.getElementById(id);
-//      if (el) el.href = url;
-//    });
-//    document.querySelectorAll('a.mobile-cta').forEach(el => { el.href = url; });
-//  }
+      //  function setDownloadUrls(url) {
+      //    ['dl-nav', 'dl-hero', 'dl-oss'].forEach(id => {
+      //      const el = document.getElementById(id);
+      //      if (el) el.href = url;
+      //    });
+      //    document.querySelectorAll('a.mobile-cta').forEach(el => { el.href = url; });
+      //  }
 
-  async function fetchReleaseData() {
-    try {
-      const [dlRes, tagRes] = await Promise.all([
-        fetch('https://img.shields.io/github/downloads/NyanTV/NyanTV/total.json'),
-        fetch('https://img.shields.io/github/v/release/NyanTV/NyanTV.json')
-      ]);
+      async function fetchReleaseData() {
+        const REPO = 'NyanTV/NyanTV';
 
-      // --- Version pill ---
-      if (tagRes.ok) {
-        const tagData = await tagRes.json();
-        const tag = tagData.message; // e.g. "v0.2.1-hotfix"
+        async function getVersion() {
+          try {
+            const r = await fetch(`https://img.shields.io/github/v/release/${REPO}.json`);
+            if (r.ok) {
+              const d = await r.json();
+              if (d.message && d.message !== 'unknown' && d.message !== 'invalid') return d.message;
+            }
+          } catch { }
+          try {
+            const r = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`);
+            if (r.ok) {
+              const d = await r.json();
+              if (d.tag_name) return d.tag_name;
+            }
+          } catch { }
+          return null;
+        }
+
+        async function getDownloads() {
+          try {
+            const r = await fetch(`https://img.shields.io/github/downloads/${REPO}/total.json`);
+            if (r.ok) {
+              const d = await r.json();
+              if (d.message && d.message !== 'invalid') {
+                const n = parseShieldsCount(d.message);
+                if (n > 0) return n;
+              }
+            }
+          } catch { }
+          try {
+            const r = await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=100`);
+            if (r.ok) {
+              const releases = await r.json();
+              const total = releases.reduce((sum, rel) =>
+                sum + rel.assets.reduce((s, a) => s + (a.download_count || 0), 0), 0);
+              if (total > 0) return total;
+            }
+          } catch { }
+          return 300;
+        }
+
+        const [version, downloads] = await Promise.all([getVersion(), getDownloads()]);
+
         const pill = document.getElementById('version-pill');
-        if (pill && tag && tag !== 'unknown') pill.textContent = tag;
+        if (pill) {
+          if (version) {
+            pill.textContent = version;
+          } else {
+            pill.closest('.hero-meta')?.remove();
+          }
+        }
+
+        animateDownloads(downloads);
       }
 
-      // Always point download buttons to the latest release page
-      //setDownloadUrls('https://github.com/NyanTV/NyanTV/releases/latest');
+      function animateDownloads(total) {
+        const floored = Math.floor(total / 100) * 100;
+        const finalLabel = floored.toLocaleString() + '+';
 
-      // --- Download counter ---
-      if (dlRes.ok) {
-        const dlData = await dlRes.json();
-        const total = parseShieldsCount(dlData.message);
-        if (total > 0) animateDownloads(total);
+        const countEl = document.getElementById('dl-count');
+        const statsEl = document.getElementById('hero-stats');
+        if (!countEl || !statsEl) return;
+
+        statsEl.style.opacity = '1';
+
+        const duration = 1800;
+
+        function runAnimation() {
+          const start = performance.now();
+          function tick(now) {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
+            countEl.textContent = Math.floor(eased * floored).toLocaleString() + '+';
+            if (p < 1) requestAnimationFrame(tick);
+            else countEl.textContent = finalLabel;
+          }
+          requestAnimationFrame(tick);
+        }
+
+        // Only start the animation once the chip is actually visible
+        const io = new IntersectionObserver(entries => {
+          if (entries[0].isIntersecting) { runAnimation(); io.disconnect(); }
+        }, { threshold: 0.5 });
+        io.observe(statsEl);
       }
 
-    } catch (e) {
-      console.warn('Release data fetch failed:', e);
-      // Buttons already have fallback hrefs in HTML — nothing to do
-    }
-  }
+      // =============================================
+      // INIT
+      // =============================================
 
-  function animateDownloads(total) {
-    const floored = Math.floor(total / 100) * 100;
-    const finalLabel = floored.toLocaleString() + '+';
+      renderFeatures();
+      renderRoadmap();
+      initRoadmapToggle();
+      initNav();
+      initReveal();
+      initYTModal();
+      fetchReleaseData();
 
-    const countEl = document.getElementById('dl-count');
-    const statsEl = document.getElementById('hero-stats');
-    if (!countEl || !statsEl) return;
+      // =============================================
+      // BEFOREUNLOAD
+      // =============================================
+      let hasDownloaded = false;
 
-    statsEl.style.opacity = '1';
+      document.querySelectorAll('#dl-nav, #dl-hero, #dl-oss, a.mobile-cta, a.nav-cta').forEach(el => {
+        el.addEventListener('click', () => { hasDownloaded = true; });
+      });
 
-    const duration = 1800;
+      window.addEventListener('beforeunload', e => {
+        if (!hasDownloaded) {
+          e.preventDefault();
+          e.returnValue = '';
+        }
+      });
 
-    function runAnimation() {
-      const start = performance.now();
-      function tick(now) {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
-        countEl.textContent = Math.floor(eased * floored).toLocaleString() + '+';
-        if (p < 1) requestAnimationFrame(tick);
-        else countEl.textContent = finalLabel;
-      }
-      requestAnimationFrame(tick);
-    }
+      history.pushState(null, '', window.location.href);
 
-    // Only start the animation once the chip is actually visible
-    const io = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) { runAnimation(); io.disconnect(); }
-    }, { threshold: 0.5 });
-    io.observe(statsEl);
-  }
+      window.addEventListener('popstate', () => {
+        if (hasDownloaded) return;
+        history.pushState(null, '', window.location.href);
+      });
 
-  // =============================================
-  // INIT
-  // =============================================
-
-  renderFeatures();
-  renderRoadmap();
-  initRoadmapToggle();
-  initNav();
-  initReveal();
-  initYTModal();
-  fetchReleaseData();
-
-  // =============================================
-  // BEFOREUNLOAD
-  // =============================================
-  let hasDownloaded = false;
-
-  document.querySelectorAll('#dl-nav, #dl-hero, #dl-oss, a.mobile-cta, a.nav-cta').forEach(el => {
-    el.addEventListener('click', () => { hasDownloaded = true; });
-  });
-
-  window.addEventListener('beforeunload', e => {
-    if (!hasDownloaded) {
-      e.preventDefault();
-      e.returnValue = '';
-    }
-  });
-
-  history.pushState(null, '', window.location.href);
-
-  window.addEventListener('popstate', () => {
-    if (hasDownloaded) return;
-    history.pushState(null, '', window.location.href);
-  });
-
-})();
-</script>
+    })();
+  </script>
 </body>
+
 </html>

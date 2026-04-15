@@ -3,3 +3,4 @@
 !.gitattributes
 !.gitmodules
 !.github/
+!.well-known/

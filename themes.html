@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NyanTV · Theme Builder</title>
+    <meta name="description" content="Build custom color themes for NyanTV — live preview, presets, and JSON export." />
+    <link rel="icon" type="image/png"
+        href="https://raw.githubusercontent.com/NyanTV/webpage/refs/heads/assets/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --purple: #623bfa;
+            --purple-bright: #7c5cfc;
+            --purple-glow: rgba(98, 59, 250, 0.32);
+            --purple-faint: rgba(98, 59, 250, 0.07);
+            --bg: #080710;
+            --bg2: #0c0b1c;
+            --bg3: #0f0e22;
+            --surface: rgba(255, 255, 255, 0.035);
+            --surface-hover: rgba(255, 255, 255, 0.065);
+            --border: rgba(255, 255, 255, 0.07);
+            --border-purple: rgba(98, 59, 250, 0.22);
+            --text: #eeecff;
+            --text-muted: rgba(238, 236, 255, 0.5);
+            --text-dim: rgba(238, 236, 255, 0.28);
+            --green: #3dffa0;
+            --font: 'Work Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 max(1.5rem, 5vw);
+            height: 60px;
+            background: rgba(8, 7, 16, 0.75);
+            backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            text-decoration: none;
+        }
+
+        .nav-logo-text {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .nav-logo-sep {
+            color: var(--text-dim);
+            font-weight: 300;
+            margin: 0 2px;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            transition: color 0.18s, background 0.18s, border-color 0.18s;
+        }
+
+        .nav-back:hover {
+            color: var(--text);
+            background: var(--surface-hover);
+            border-color: var(--border-purple);
+        }
+
+        /* ── PAGE SHELL ── */
+        .page {
+            padding-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── HERO STRIP ── */
+        .builder-hero {
+            padding: clamp(2.5rem, 5vw, 4rem) max(1.5rem, 5vw) 0;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .builder-hero .section-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: #9d82ff;
+            margin-bottom: 0.7rem;
+        }
+
+        .builder-hero h1 {
+            font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.12;
+            margin-bottom: 0.6rem;
+        }
+
+        .builder-hero p {
+            font-size: 0.93rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.75;
+            max-width: 520px;
+            margin-bottom: 1.6rem;
+        }
+
+        /* ── WORKSPACE ── */
+        .workspace {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem max(1.5rem, 5vw) 5rem;
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 900px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── CARD ── */
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 0.75rem 1.3rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--purple);
+            box-shadow: 0 0 6px var(--purple-glow);
+        }
+
+        .card-header .dot.green {
+            background: var(--green);
+            box-shadow: 0 0 6px rgba(61, 255, 160, 0.4);
+        }
+
+        /* ── COLOR GRID ── */
+        .color-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+        }
+
+        @media (max-width: 540px) {
+            .color-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .color-row {
+            background: var(--bg2);
+            padding: 0.85rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: background 0.15s;
+        }
+
+        .color-row:hover {
+            background: var(--bg3);
+        }
+
+        .swatch-wrap {
+            position: relative;
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .swatch-wrap:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+        }
+
+        .swatch-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .swatch-wrap input[type=color] {
+            position: absolute;
+            inset: -4px;
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+            opacity: 0;
+            cursor: pointer;
+            border: none;
+        }
+
+        .color-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .color-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .color-hex {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            margin-top: 2px;
+            font-weight: 400;
+        }
+
+        /* ── NAME FIELD ── */
+        .name-wrap {
+            padding: 1.1rem 1.3rem;
+        }
+
+        .name-wrap label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-dim);
+            display: block;
+            margin-bottom: 0.45rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .name-wrap input[type=text] {
+            width: 100%;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            padding: 0.6rem 1rem;
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 0.88rem;
+            font-weight: 400;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .name-wrap input[type=text]:focus {
+            border-color: rgba(98, 59, 250, 0.5);
+            box-shadow: 0 0 0 3px rgba(98, 59, 250, 0.12);
+        }
+
+        /* ── PRESETS ── */
+        .preset-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 1rem 1.3rem;
+        }
+
+        .preset-chip {
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            cursor: pointer;
+            font-family: var(--font);
+            transition: border-color 0.2s, background 0.2s, color 0.2s;
+        }
+
+        .preset-chip:hover {
+            border-color: var(--border-purple);
+            background: var(--purple-faint);
+            color: var(--text);
+        }
+
+        .preset-chip.active {
+            border-color: rgba(98, 59, 250, 0.45);
+            background: rgba(98, 59, 250, 0.14);
+            color: #b09cff;
+        }
+
+        /* ── JSON BOX ── */
+        .json-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .json-content {
+            padding: 1rem 1.3rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.68rem;
+            line-height: 1.75;
+            color: var(--text-dim);
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 210px;
+            overflow-y: auto;
+        }
+
+        .json-content .jk {
+            color: #b09cff;
+        }
+
+        .json-content .jv {
+            color: var(--green);
+        }
+
+        .json-content .jb {
+            color: var(--text-dim);
+            opacity: 0.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        /* ── RIGHT PANEL ── */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        /* ── PREVIEW ── */
+        .preview-shell {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.2rem;
+        }
+
+        .preview-shell .card-header {
+            background: transparent;
+            padding: 0 0 0.8rem;
+            border: none;
+        }
+
+        .tv-frame {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(98, 59, 250, 0.18);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        #preview-bg {
+            padding: 1rem 1.1rem;
+            min-height: 220px;
+            transition: background 0.3s;
+        }
+
+        .prev-topbar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .prev-logo {
+            width: 22px;
+            height: 22px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            transition: background 0.3s;
+        }
+
+        .prev-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .prev-section-label {
+            font-size: 0.58rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.45rem;
+            transition: color 0.3s;
+        }
+
+        .prev-card {
+            border-radius: 9px;
+            padding: 0.7rem 0.8rem;
+            margin-bottom: 0.55rem;
+            transition: background 0.3s;
+        }
+
+        .prev-card-title {
+            font-size: 0.68rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            transition: color 0.3s;
+        }
+
+        .prev-card-sub {
+            font-size: 0.6rem;
+            transition: color 0.3s;
+        }
+
+        .prev-btn {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.62rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* ── ACTIONS ── */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.78rem 1rem;
+            border: none;
+            border-radius: 10px;
+            font-family: var(--font);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: transform 0.15s, box-shadow 0.15s, background 0.18s, border-color 0.18s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: var(--purple);
+            color: #fff;
+            box-shadow: 0 3px 18px rgba(98, 59, 250, 0.38);
+        }
+
+        .btn-primary:hover {
+            background: var(--purple-bright);
+            box-shadow: 0 6px 26px rgba(98, 59, 250, 0.52);
+        }
+
+        .btn-ghost {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .btn-ghost:hover {
+            background: var(--surface-hover);
+            color: var(--text);
+            border-color: var(--border-purple);
+        }
+
+        .btn-green {
+            background: rgba(61, 255, 160, 0.08);
+            border: 1px solid rgba(61, 255, 160, 0.22);
+            color: var(--green);
+        }
+
+        .btn-green:hover {
+            background: rgba(61, 255, 160, 0.14);
+            border-color: rgba(61, 255, 160, 0.4);
+        }
+
+        /* ── TOAST ── */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(60px);
+            background: var(--bg3);
+            border: 1px solid var(--border-purple);
+            color: var(--text);
+            padding: 0.6rem 1.4rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s cubic-bezier(.34, 1.56, .64, 1);
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        #toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ── DIVIDER ── */
+        hr.section-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem max(1.5rem, 5vw);
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.4rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            transition: color 0.18s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a class="nav-logo" href="index.html">
+            <img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/github_assets/images/logo.png" alt="NyanTV"
+                style="height:30px;width:auto;border-radius:7px;">
+            <span class="nav-logo-text">NyanTV</span>
+            <span class="nav-logo-sep">/</span>
+            <span class="nav-logo-text" style="color:#9d82ff;font-weight:500;">Theme Builder</span>
+        </a>
+        <a class="nav-back" href="index.html">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="15 18 9 12 15 6" />
+            </svg>
+            Back to Home
+        </a>
+    </nav>
+
+    <div class="page">
+
+        <!-- Hero -->
+        <div class="builder-hero">
+            <span class="section-label">Customization</span>
+            <h1>Theme Builder</h1>
+            <p>Design a color scheme, preview it live, then export the JSON and drop it straight into NyanTV.</p>
+        </div>
+
+        <!-- Workspace -->
+        <div class="workspace">
+
+            <!-- LEFT: editor -->
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+                <!-- Name -->
+                <div class="card">
+                    <div class="card-header"><span class="dot"></span>Theme Name</div>
+                    <div class="name-wrap">
+                        <label>name</label>
+                        <input type="text" id="themeName" value="My Theme" oninput="update()">
+                    </div>
+                </div>
+
+                <!-- Colors -->
+                <div class="card">
+                    <div class="card-header"><span class="dot"></span>Color Tokens
+                        <span
+                            style="margin-left:auto;font-size:0.63rem;color:var(--text-dim);text-transform:none;letter-spacing:0;">AARRGGBB
+                            format</span>
+                    </div>
+                    <div class="color-grid" id="colorGrid"></div>
+                </div>
+
+                <!-- Presets -->
+                <div class="card">
+                    <div class="card-header"><span class="dot green"></span>Presets</div>
+                    <div class="preset-row" id="presetRow"></div>
+                </div>
+
+                <!-- JSON Output -->
+                <div class="json-box">
+                    <div class="card-header" style="background:transparent;"><span class="dot"></span>JSON Output</div>
+                    <div class="json-content" id="jsonOutput"></div>
+                </div>
+            </div>
+
+            <!-- RIGHT: preview + actions -->
+            <div class="right-panel">
+
+                <!-- Live Preview -->
+                <div class="preview-shell">
+                    <div class="card-header"><span class="dot green"></span>Live Preview</div>
+                    <div class="tv-frame">
+                        <div id="preview-bg">
+                            <div class="prev-topbar">
+                                <div class="prev-logo" id="prev-logo">N</div>
+                                <span class="prev-title" id="prev-title">NyanTV</span>
+                            </div>
+                            <div class="prev-section-label" id="prev-sl">Continue Watching</div>
+                            <div class="prev-card" id="prev-card1">
+                                <div class="prev-card-title" id="prev-ct1">Frieren: Beyond Journey's End</div>
+                                <div class="prev-card-sub" id="prev-cs1">Episode 24 · Tracked on AniList</div>
+                                <span class="prev-btn" id="prev-btn">▶ Watch Now</span>
+                            </div>
+                            <div class="prev-card" id="prev-card2">
+                                <div class="prev-card-title" id="prev-ct2">Trending Today</div>
+                                <div class="prev-card-sub" id="prev-cs2">Dandadan · One Piece · Solo Leveling</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="actions">
+                    <button class="btn btn-primary" onclick="downloadJson()">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.3">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Download theme.json
+                    </button>
+                    <button class="btn btn-ghost" onclick="copyJson()">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" />
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
+                        Copy JSON
+                    </button>
+                    <button class="btn btn-green" onclick="randomize()">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 3 21 3 21 8" />
+                            <line x1="4" y1="20" x2="21" y2="3" />
+                            <polyline points="21 16 21 21 16 21" />
+                            <line x1="15" y1="15" x2="21" y2="21" />
+                        </svg>
+                        Randomize
+                    </button>
+                </div>
+
+                <!-- Wiki hint -->
+                <a class="btn btn-ghost" href="https://github.com/NyanTV/NyanTV/wiki" target="_blank" rel="noopener"
+                    style="font-size:0.8rem;text-decoration:none;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                    </svg>
+                    How to apply a theme → Wiki
+                </a>
+            </div>
+        </div>
+
+        <hr class="section-divider" />
+
+        <footer>
+            <div class="footer-left">
+                <img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/github_assets/images/logo.png"
+                    alt="NyanTV" style="height:24px;width:auto;border-radius:6px;">
+                <span class="footer-copy">NyanTV &nbsp;·&nbsp; MIT License</span>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="https://github.com/NyanTV/NyanTV/releases/" target="_blank" rel="noopener">Releases</a>
+                <a href="https://github.com/NyanTV/NyanTV/wiki" target="_blank" rel="noopener">Wiki</a>
+                <a href="https://github.com/NyanTV/NyanTV/blob/main/LICENSE.md" target="_blank"
+                    rel="noopener">License</a>
+            </div>
+        </footer>
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            // ── Token definitions ──────────────────────────────────────────────────────
+            const TOKENS = [
+                { key: 'primary', label: 'primary', def: '#FFB388FF' },
+                { key: 'onPrimary', label: 'onPrimary', def: '#FF1A0A3D' },
+                { key: 'primaryContainer', label: 'primaryContainer', def: '#FF2D1A6B' },
+                { key: 'onPrimaryContainer', label: 'onPrimaryContainer', def: '#FFEADDFF' },
+                { key: 'secondary', label: 'secondary', def: '#FFCBC2DB' },
+                { key: 'background', label: 'background', def: '#FF0E0E18' },
+                { key: 'surface', label: 'surface', def: '#FF16161F' },
+                { key: 'surfaceContainer', label: 'surfaceContainer', def: '#FF21212D' },
+                { key: 'onBackground', label: 'onBackground', def: '#FFE5E2F5' },
+                { key: 'onSurface', label: 'onSurface', def: '#FFE5E2F5' },
+            ];
+
+            // ── Presets ────────────────────────────────────────────────────────────────
+            const PRESETS = {
+                'Sakura': { primary: '#FFE8A0BF', onPrimary: '#FF4A1A2C', primaryContainer: '#FF6B2D45', onPrimaryContainer: '#FFFFD7E9', secondary: '#FFCCB8BE', background: '#FF1A1015', surface: '#FF221720', surfaceContainer: '#FF2E2028', onBackground: '#FFEDE0E4', onSurface: '#FFEDE0E4' },
+                'Ocean': { primary: '#FF7FD1EE', onPrimary: '#FF00374D', primaryContainer: '#FF004F6B', onPrimaryContainer: '#FFC4E8F8', secondary: '#FFB2CAD6', background: '#FF0D1B21', surface: '#FF162530', surfaceContainer: '#FF1E303C', onBackground: '#FFDEEFF5', onSurface: '#FFDEEFF5' },
+                'Midnight': { primary: '#FFBBB3FF', onPrimary: '#FF251E6A', primaryContainer: '#FF3C3482', onPrimaryContainer: '#FFE3DFFF', secondary: '#FFC5C0D8', background: '#FF0E0E18', surface: '#FF16161F', surfaceContainer: '#FF21212D', onBackground: '#FFE5E2F5', onSurface: '#FFE5E2F5' },
+                'Forest': { primary: '#FF8FD4A1', onPrimary: '#FF00391D', primaryContainer: '#FF1A5232', onPrimaryContainer: '#FFACEEBF', secondary: '#FFB0CAB9', background: '#FF0C1510', surface: '#FF141F17', surfaceContainer: '#FF1F2D22', onBackground: '#FFDEEDE4', onSurface: '#FFDEEDE4' },
+                'Sunset': { primary: '#FFFFB075', onPrimary: '#FF4A2000', primaryContainer: '#FF6B3200', onPrimaryContainer: '#FFFFDCC2', secondary: '#FFD5BFA9', background: '#FF1C1208', surface: '#FF261A0D', surfaceContainer: '#FF322316', onBackground: '#FFF2E0D0', onSurface: '#FFF2E0D0' },
+                'OLED': { primary: '#FFCFBCFF', onPrimary: '#FF381E72', primaryContainer: '#FF4F378B', onPrimaryContainer: '#FFEADDFF', secondary: '#FFCBC2DB', background: '#FF000000', surface: '#FF000000', surfaceContainer: '#FF111111', onBackground: '#FFEAE1F5', onSurface: '#FFEAE1F5' },
+                'Cyberpunk': { primary: '#FFFF00CC', onPrimary: '#FF1A0033', primaryContainer: '#FF2D0052', onPrimaryContainer: '#FFFFAAFF', secondary: '#FF00FFCC', background: '#FF05000F', surface: '#FF0A0018', surfaceContainer: '#FF120025', onBackground: '#FFEEDFFF', onSurface: '#FFEEDFFF' },
+                'Rose Gold': { primary: '#FFE8B4A0', onPrimary: '#FF2C1008', primaryContainer: '#FF4A2018', onPrimaryContainer: '#FFFFD8CC', secondary: '#FFD4B8B0', background: '#FF180E0C', surface: '#FF221512', surfaceContainer: '#FF2E1E1A', onBackground: '#FFF5E8E4', onSurface: '#FFF5E8E4' },
+            };
+
+            // ── State ──────────────────────────────────────────────────────────────────
+            const state = {};
+            TOKENS.forEach(t => state[t.key] = t.def);
+
+            // ── Color helpers ──────────────────────────────────────────────────────────
+            function aarrggbbToHex6(c) {
+                const h = c.replace('#', '');
+                if (h.length === 8) return '#' + h.slice(2);
+                if (h.length === 6) return '#' + h;
+                return '#888888';
+            }
+            function hex6ToAarrggbb(c) {
+                return '#FF' + c.replace('#', '').toUpperCase();
+            }
+            function aarrggbbToCss(c) {
+                const h = c.replace('#', '');
+                if (h.length < 8) return '#888';
+                const a = parseInt(h.slice(0, 2), 16) / 255;
+                const r = parseInt(h.slice(2, 4), 16);
+                const g = parseInt(h.slice(4, 6), 16);
+                const b = parseInt(h.slice(6, 8), 16);
+                return `rgba(${r},${g},${b},${a})`;
+            }
+
+            // ── Build grid ─────────────────────────────────────────────────────────────
+            function buildGrid() {
+                const grid = document.getElementById('colorGrid');
+                grid.innerHTML = '';
+                TOKENS.forEach(t => {
+                    const row = document.createElement('div');
+                    row.className = 'color-row';
+                    row.innerHTML = `
+        <div class="swatch-wrap" title="Click to pick colour">
+          <div class="swatch-bg" id="swatch-${t.key}"></div>
+          <input type="color" id="picker-${t.key}" value="${aarrggbbToHex6(state[t.key])}"
+                 oninput="onPick('${t.key}', this.value)">
+        </div>
+        <div class="color-info">
+          <div class="color-label">${t.label}</div>
+          <div class="color-hex" id="hex-${t.key}">${state[t.key]}</div>
+        </div>`;
+                    grid.appendChild(row);
+                    document.getElementById(`swatch-${t.key}`).style.background = aarrggbbToCss(state[t.key]);
+                });
+            }
+
+            // ── Build presets ──────────────────────────────────────────────────────────
+            function buildPresets() {
+                const row = document.getElementById('presetRow');
+                Object.keys(PRESETS).forEach(name => {
+                    const chip = document.createElement('button');
+                    chip.className = 'preset-chip';
+                    chip.textContent = name;
+                    chip.id = 'preset-' + name.replace(/\s+/g, '-');
+                    chip.onclick = () => applyPreset(name);
+                    row.appendChild(chip);
+                });
+            }
+
+            function applyPreset(name) {
+                const p = PRESETS[name];
+                Object.keys(p).forEach(k => state[k] = p[k]);
+                document.getElementById('themeName').value = name;
+                // reset active states
+                document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
+                const chip = document.getElementById('preset-' + name.replace(/\s+/g, '-'));
+                if (chip) chip.classList.add('active');
+                rebuildPickers(); update();
+                toast(`Preset "${name}" applied`);
+            }
+
+            function rebuildPickers() {
+                TOKENS.forEach(t => {
+                    const picker = document.getElementById(`picker-${t.key}`);
+                    if (picker) picker.value = aarrggbbToHex6(state[t.key]);
+                    const swatch = document.getElementById(`swatch-${t.key}`);
+                    if (swatch) swatch.style.background = aarrggbbToCss(state[t.key]);
+                    const hexEl = document.getElementById(`hex-${t.key}`);
+                    if (hexEl) hexEl.textContent = state[t.key];
+                });
+            }
+
+            function onPick(key, hex6) {
+                state[key] = hex6ToAarrggbb(hex6);
+                const swatch = document.getElementById(`swatch-${key}`);
+                if (swatch) swatch.style.background = aarrggbbToCss(state[key]);
+                const hexEl = document.getElementById(`hex-${key}`);
+                if (hexEl) hexEl.textContent = state[key];
+                // deactivate preset chips since user edited manually
+                document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
+                update();
+            }
+
+            // ── Update ─────────────────────────────────────────────────────────────────
+            function update() { updatePreview(); updateJson(); }
+
+            function updatePreview() {
+                const bg = aarrggbbToCss(state.background);
+                const surf = aarrggbbToCss(state.surface);
+                const sc = aarrggbbToCss(state.surfaceContainer);
+                const pri = aarrggbbToCss(state.primary);
+                const onPri = aarrggbbToCss(state.onPrimary);
+                const onBg = aarrggbbToCss(state.onBackground);
+                const onSurf = aarrggbbToCss(state.onSurface);
+                const sec = aarrggbbToCss(state.secondary);
+
+                document.getElementById('preview-bg').style.background = bg;
+                const logo = document.getElementById('prev-logo');
+                logo.style.background = pri; logo.style.color = onPri;
+                document.getElementById('prev-title').style.color = onBg;
+                document.getElementById('prev-sl').style.color = sec;
+                const c1 = document.getElementById('prev-card1');
+                c1.style.background = surf;
+                document.getElementById('prev-ct1').style.color = onSurf;
+                document.getElementById('prev-cs1').style.color = onSurf;
+                const c2 = document.getElementById('prev-card2');
+                c2.style.background = sc;
+                document.getElementById('prev-ct2').style.color = onSurf;
+                document.getElementById('prev-cs2').style.color = onSurf;
+                const btn = document.getElementById('prev-btn');
+                btn.style.background = pri; btn.style.color = onPri;
+            }
+
+            function updateJson() {
+                const name = document.getElementById('themeName').value || 'My Theme';
+                const obj = { name, ...Object.fromEntries(TOKENS.map(t => [t.key, state[t.key]])) };
+                const lines = JSON.stringify(obj, null, 2).split('\n');
+                const html = lines.map(l =>
+                    l.replace(/"([^"]+)":/g, '<span class="jk">"$1"</span>:')
+                        .replace(/: "([^"]+)"/g, ': <span class="jv">"$1"</span>')
+                        .replace(/[{}]/g, m => `<span class="jb">${m}</span>`)
+                ).join('\n');
+                document.getElementById('jsonOutput').innerHTML = html;
+            }
+
+            // ── Actions ────────────────────────────────────────────────────────────────
+            function getJson() {
+                const name = document.getElementById('themeName').value || 'My Theme';
+                return JSON.stringify({ name, ...Object.fromEntries(TOKENS.map(t => [t.key, state[t.key]])) }, null, 2);
+            }
+
+            window.downloadJson = function () {
+                const name = (document.getElementById('themeName').value || 'theme').replace(/\s+/g, '-').toLowerCase();
+                const blob = new Blob([getJson()], { type: 'application/json' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob); a.download = `${name}.json`; a.click();
+                toast('Downloaded!');
+            };
+
+            window.copyJson = function () {
+                navigator.clipboard.writeText(getJson()).then(() => toast('Copied to clipboard!'));
+            };
+
+            window.randomize = function () {
+                const hue = Math.random() * 360;
+                function hslToHex(h, s, l) {
+                    h /= 360; s /= 100; l /= 100;
+                    let r, g, b;
+                    if (s === 0) { r = g = b = l } else {
+                        const q = l < .5 ? l * (1 + s) : l + s - l * s, p = 2 * l - q;
+                        const h2r = (p, q, t) => { if (t < 0) t += 1; if (t > 1) t -= 1; if (t < 1 / 6) return p + (q - p) * 6 * t; if (t < .5) return q; if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6; return p; };
+                        r = h2r(p, q, h + 1 / 3); g = h2r(p, q, h); b = h2r(p, q, h - 1 / 3);
+                    }
+                    return [r, g, b].map(x => Math.round(x * 255).toString(16).padStart(2, '0').toUpperCase()).join('');
+                }
+                state.primary = '#FF' + hslToHex(hue, 70, 75);
+                state.onPrimary = '#FF' + hslToHex(hue, 80, 12);
+                state.primaryContainer = '#FF' + hslToHex(hue, 60, 22);
+                state.onPrimaryContainer = '#FF' + hslToHex(hue, 50, 90);
+                state.secondary = '#FF' + hslToHex((hue + 30) % 360, 20, 68);
+                state.background = '#FF' + hslToHex(hue, 30, 6);
+                state.surface = '#FF' + hslToHex(hue, 28, 9);
+                state.surfaceContainer = '#FF' + hslToHex(hue, 25, 13);
+                state.onBackground = '#FF' + hslToHex(hue, 15, 92);
+                state.onSurface = '#FF' + hslToHex(hue, 15, 92);
+                document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
+                rebuildPickers(); update();
+                toast('Randomized!');
+            };
+
+            window.onPick = onPick;
+
+            // ── Toast ──────────────────────────────────────────────────────────────────
+            let toastTimer;
+            function toast(msg) {
+                const el = document.getElementById('toast');
+                el.textContent = msg;
+                el.classList.add('show');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => el.classList.remove('show'), 2000);
+            }
+
+            // ── Init ───────────────────────────────────────────────────────────────────
+            buildGrid();
+            buildPresets();
+            update();
+        })();
+    </script>
+</body>
+
+</html>

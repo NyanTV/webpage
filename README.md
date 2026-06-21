@@ -4,8 +4,7 @@
 # NyanTV Webpage
 
 Landing page for [nyantv.vercel.app](https://nyantv.vercel.app).
-
-Single `index.html` file. Vanilla HTML, CSS, and JavaScript with [Work Sans](https://fonts.google.com/specimen/Work+Sans) via Google Fonts. Version tag and download count fetched live from [shields.io](https://shields.io).
+Built with Vanilla HTML, CSS, and JavaScript with [Work Sans](https://fonts.google.com/specimen/Work+Sans) via Google Fonts. Version tag and download count fetched live from [shields.io](https://shields.io).
 
 ## Related
 
@@ -18,5 +17,8 @@ Join our community to stay updated and contribute to the discussion:
 
 
 <a href="https://t.me/NyanSupport" style="display: inline-block;"><img src="https://files.catbox.moe/z66xwr.png" alt="Telegram" height="40" style="vertical-align: middle;"></a>
-<a href="https://discord.gg/kFrnJfRm" style="display: inline-block;"><img src="https://files.catbox.moe/tb0004.png" alt="Discord" height="40" style="vertical-align: middle;"></a>
 <a href="https://stoat.chat/invite/fKzse8yy" style="display: inline-block;"><img src="https://raw.githubusercontent.com/NyanTV/NyanTV/main/github_assets/images/stoat-icon.png" alt="Stoat" height="40" style="vertical-align: middle;"></a>
+
+<a href="https://discord.gg/y2vaFPXs4F">
+<img src="https://invite.casperiv.dev?inviteCode=y2vaFPXs4F" alt="Discord">
+</a>
